@@ -1,12 +1,12 @@
 # les-devoirs-de-primaire
-Site permettant aux enfants en primaire de faire des exercices de maths/français et peut être plus par la suite
+Site permettant aux enfants en primaire de faire des exercices de maths/français.
 
-# installation :
+# Installation :
 1 - Téléchargez le code
 
 2 - Transférez le sur un hébergement avec php (pas de base de données utilisée)
 
-3 - Après le transfert, dans les répertoires addition, conjugaison_phrase, conjugaison_verbe, dictee, multiplication et soustraction, changez les droits en 777 pour les sous-répertoires logs, resultats et supprime
+3 - Après le transfert, dans les répertoires addition, conjugaison_phrase, conjugaison_verbe, dictee, multiplication et soustraction, changez les droits en 777 pour les sous-répertoires logs, resultats et supprime → Fait
 
 # TODO
 1 - Créer un système de connexion avec profil
