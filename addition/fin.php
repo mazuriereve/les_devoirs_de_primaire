@@ -3,7 +3,8 @@
     include 'utils.php';
 	session_start();
 
-    log_adresse_ip("logs/log.txt","fin.php - ".$_SESSION['prenom']);
+    //log_adresse_ip("logs/log.txt","fin.php - ".$_SESSION['prenom']);
+	log_adresse_ip("logs/logs.json", "fin.php");
 
 	$_SESSION['origine']="fin";
 ?>

@@ -29,6 +29,11 @@ Site permettant aux enfants en primaire de faire des exercices de maths/françai
 Ce fichier contient la création de la base de données ainsi que de la table users. Les utilisateurs peuvent renseigner leur Nom , Prénom , Classe , avoir leur date de création de compte et pour sécuriser le mot de passe on ajoute un mot de passe crypté lors de l'entrée en base.
 
 
+première amélioration pour les logs : 
+- optimisation  des informations + regroupement des logs 
+
+- Utilisation de  JSON pour les logs pour faciliter le traitement et l'analyse des données. 
+
 
 
 Bonus :
