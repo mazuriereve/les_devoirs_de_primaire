@@ -88,26 +88,37 @@ foreach ($modules_scores as $module => $module_scores) {
             <script>
                 var ctx_<?= htmlspecialchars($module) ?> = document.getElementById('chart_<?= htmlspecialchars($module) ?>').getContext('2d');
                 var chart_<?= htmlspecialchars($module) ?> = new Chart(ctx_<?= htmlspecialchars($module) ?>, {
-                    type: 'bar',  // Type de graphique (barres ici, mais tu peux changer à 'line', 'pie', etc.)
+                    type: 'line',
                     data: {
-                        labels: <?= json_encode(array_keys($module_scores)) ?>,  // Par exemple, les dates ou autres labels
+                        labels: <?= json_encode(array_map('strval', array_keys($module_scores))) ?>, // Convertir les clés en chaînes
                         datasets: [{
                             label: 'Scores',
-                            data: <?= json_encode($module_scores) ?>,  // Les scores à afficher
-                            backgroundColor: 'rgba(54, 162, 235, 0.2)',
-                            borderColor: 'rgba(54, 162, 235, 1)',
-                            borderWidth: 1
+                            data: <?= json_encode(array_values($module_scores)) ?>,
+                            borderColor: 'rgba(75, 192, 192, 1)',
+                            backgroundColor: 'rgba(75, 192, 192, 0.2)',
+                            borderWidth: 2,
+                            pointRadius: 5,
+                            pointBackgroundColor: 'rgba(75, 192, 192, 1)',
+                            tension: 0.3
                         }]
                     },
                     options: {
+                        responsive: true,
                         scales: {
                             y: {
-                                beginAtZero: true
+                                min: 1,
+                                max: 10,
+                                ticks: { stepSize: 1 }
+                            },
+                            x: {
+                                title: { display: true, text: 'Numéro du test' }
                             }
                         }
                     }
                 });
             </script>
+
+
 
             <hr>
         <?php endforeach; ?>

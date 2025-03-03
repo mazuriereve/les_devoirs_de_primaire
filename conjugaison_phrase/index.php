@@ -1,15 +1,41 @@
 <?php
-	@ob_start();
+    @ob_start();
     include 'utils.php';
-    log_adresse_ip("logs/log.txt","index.php");
+    log_adresse_ip("logs/log.txt", "index.php");
 
-	session_start();
-	$_SESSION['nbMaxQuestions']=10;
-	$_SESSION['nbQuestion']=0;
-	$_SESSION['nbBonneReponse']=0;
-	$_SESSION['prenom']="";
-	$_SESSION['historique']="";
-	$_SESSION['origine']="index";
+    session_start();
+    $_SESSION['nbMaxQuestions'] = 10;
+    $_SESSION['nbQuestion'] = 0;
+    $_SESSION['nbBonneReponse'] = 0;
+    $_SESSION['prenom'] = "";
+    $_SESSION['historique'] = "";
+    $_SESSION['origine'] = "index";
+?>
+
+<?php
+// Vérifie si l'utilisateur est connecté
+if (!isset($_SESSION["user_id"])) {
+    header("Location: connexion.php");
+    exit();
+}
+
+// Connexion à la base de données
+$pdo = new PDO("mysql:host=localhost;dbname=devoirs_primaires", "root", "root");
+$pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+
+// Récupère les informations de l'utilisateur connecté
+$user_id = $_SESSION["user_id"];
+$sql = "SELECT prenom, nom, classe, date_creation FROM users WHERE id = ?";
+$stmt = $pdo->prepare($sql);
+$stmt->execute([$user_id]);
+$user = $stmt->fetch(PDO::FETCH_ASSOC);
+
+// Si l'utilisateur n'existe pas, détruit la session et redirige
+if (!$user) {
+    session_destroy();
+    header("Location: connexion.php");
+    exit();
+}
 ?>
 
 <!doctype html>

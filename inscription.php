@@ -14,18 +14,102 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     echo "<script>alert('Inscription réussie !'); window.location.href='page_connexion.php';</script>";
 }
 ?>
+
 <!DOCTYPE html>
 <html lang="fr">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="style.css">
     <title>Inscription</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: Arial, sans-serif;
+        }
+
+        body {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+            background: linear-gradient(to right, #6a11cb, #2575fc);
+        }
+
+        .navbar {
+            position: absolute;
+            top: 10px;
+            right: 20px;
+        }
+
+        .navbar a {
+            text-decoration: none;
+            color: white;
+            background: rgba(255, 255, 255, 0.2);
+            padding: 10px 15px;
+            border-radius: 5px;
+            transition: 0.3s;
+        }
+
+        .navbar a:hover {
+            background: rgba(255, 255, 255, 0.4);
+        }
+
+        .container {
+            background: rgba(255, 255, 255, 0.2);
+            padding: 30px;
+            border-radius: 10px;
+            backdrop-filter: blur(10px);
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+            text-align: center;
+            width: 350px;
+        }
+
+        h2 {
+            margin-bottom: 20px;
+            color: #fff;
+        }
+
+        input {
+            width: 100%;
+            padding: 10px;
+            margin: 10px 0;
+            border: none;
+            border-radius: 5px;
+            font-size: 16px;
+        }
+
+        input:focus {
+            outline: none;
+            box-shadow: 0 0 5px rgba(255, 255, 255, 0.5);
+        }
+
+        button {
+            width: 100%;
+            padding: 10px;
+            background: #fff;
+            color: #2575fc;
+            border: none;
+            border-radius: 5px;
+            font-size: 18px;
+            cursor: pointer;
+            transition: 0.3s;
+        }
+
+        button:hover {
+            background: #2575fc;
+            color: #fff;
+        }
+    </style>
 </head>
 <body>
+
     <div class="navbar">
         <a href="page_connexion.php">Connexion</a>
     </div>
+
     <div class="container">
         <h2>Inscription</h2>
         <form method="post">
@@ -36,5 +120,6 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             <button type="submit">S'inscrire</button>
         </form>
     </div>
+
 </body>
 </html>

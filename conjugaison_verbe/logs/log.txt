@@ -1,1 +1,19 @@
-[03/03/2025 14h43m19s] - 127.0.0.1 : index.php
+[
+    {
+        "timestamp": "2025-03-03 17:30:37",
+        "ip": "127.0.0.1",
+        "page": "index.php",
+        "method": "GET",
+        "user": "Inconnu",
+        "module": "addition",
+        "event": "DÉBUT SESSION"
+    },
+    {
+        "timestamp": "2025-03-03 17:30:41",
+        "ip": "127.0.0.1",
+        "page": "question.php - aze - Question numéro 1",
+        "method": "POST",
+        "user": "aze",
+        "module": "addition"
+    }
+]
