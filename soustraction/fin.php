@@ -23,9 +23,7 @@
 				<tr>
 					<td style="width:1000px;height:430px;background-image:url('./images/NO.jpg');background-repeat:no-repeat;">
 						<center>
-						
-							
-														
+									
                             <?php
                                 if($_SESSION['nbBonneReponse']>1)
                                     echo '<h2>Fin du test.</h2>Tu as '.$_SESSION['nbBonneReponse'].' bonnes réponses sur '.$_SESSION['nbQuestion'].' questions.';
@@ -106,13 +104,11 @@
 							//session_destroy();
 							//session_unset();
 							?>
-							<form action="./index.php" method="post">
+							<form action="index.php" method="post">
 								<input type="submit" value="Recommencer" autofocus>
 							</form>
-    
-    
-    
-    
+							<a href="../index.php">Retour à l'accueil</a>
+        
     
 						</center>
 					</td>

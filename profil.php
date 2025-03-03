@@ -31,15 +31,19 @@ $stmt_scores = $pdo->prepare($sql_scores);
 $stmt_scores->execute([$user["prenom"]]); // On utilise le prénom ici, mais cela pourrait être un ID utilisateur
 $scores = $stmt_scores->fetchAll(PDO::FETCH_ASSOC);
 
-// Calcul de la moyenne des scores
-$total_score = 0;
-$count_scores = 0;
+// Regroupement des scores par module
+$modules_scores = [];
 foreach ($scores as $score) {
-    $total_score += $score['score_global'];
-    $count_scores++;
+    $modules_scores[$score['module']][] = $score['score_global'];
 }
 
-$average_score = $count_scores > 0 ? $total_score / $count_scores : 0;
+// Calcul de la moyenne des scores pour chaque module
+$average_scores = [];
+foreach ($modules_scores as $module => $module_scores) {
+    $total_score = array_sum($module_scores);
+    $count_scores = count($module_scores);
+    $average_scores[$module] = $count_scores > 0 ? $total_score / $count_scores : 0;
+}
 ?>
 
 <!DOCTYPE html>
@@ -48,6 +52,7 @@ $average_score = $count_scores > 0 ? $total_score / $count_scores : 0;
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="style.css">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>  <!-- Inclure Chart.js -->
     <title>Profil</title>
 </head>
 <body>  
@@ -59,26 +64,55 @@ $average_score = $count_scores > 0 ? $total_score / $count_scores : 0;
         <p><strong>Date d'inscription :</strong> <?= $user["date_creation"] ?></p>
 
         <h3>Mes performances :</h3>
-        <!-- Tableau des performances -->
-        <table border="1" cellpadding="5" cellspacing="0" style="width: 100%; text-align: center;">
-            <thead>
-                <tr>
-                    <th>Module</th>
-                    <th>Score Global</th>
-                </tr>
-            </thead>
-            <tbody>
-                <?php foreach ($scores as $score): ?>
-                    <tr>
-                        <td><?= htmlspecialchars($score['module']) ?></td>
-                        <td><?= htmlspecialchars($score['score_global']) ?></td>
-                    </tr>
-                <?php endforeach; ?>
-            </tbody>
-        </table>
 
-        <h4><strong>Moyenne des scores :</strong> <?= number_format($average_score, 2) ?></h4>
+        <?php foreach ($modules_scores as $module => $module_scores): ?>
+            <h4>Module : <?= htmlspecialchars($module) ?></h4>
+            <table border="1" cellpadding="5" cellspacing="0" style="width: 100%; text-align: center;">
+                <thead>
+                    <tr>
+                        <th>Score Global</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <?php foreach ($module_scores as $score): ?>
+                        <tr>
+                            <td><?= htmlspecialchars($score) ?></td>
+                        </tr>
+                    <?php endforeach; ?>
+                </tbody>
+            </table>
+            <p><strong>Moyenne des scores pour <?= htmlspecialchars($module) ?> :</strong> <?= number_format($average_scores[$module], 2) ?></p>
+
+            <!-- Canvas pour afficher le graphique -->
+            <canvas id="chart_<?= htmlspecialchars($module) ?>" width="400" height="200"></canvas>
+            <script>
+                var ctx_<?= htmlspecialchars($module) ?> = document.getElementById('chart_<?= htmlspecialchars($module) ?>').getContext('2d');
+                var chart_<?= htmlspecialchars($module) ?> = new Chart(ctx_<?= htmlspecialchars($module) ?>, {
+                    type: 'bar',  // Type de graphique (barres ici, mais tu peux changer à 'line', 'pie', etc.)
+                    data: {
+                        labels: <?= json_encode(array_keys($module_scores)) ?>,  // Par exemple, les dates ou autres labels
+                        datasets: [{
+                            label: 'Scores',
+                            data: <?= json_encode($module_scores) ?>,  // Les scores à afficher
+                            backgroundColor: 'rgba(54, 162, 235, 0.2)',
+                            borderColor: 'rgba(54, 162, 235, 1)',
+                            borderWidth: 1
+                        }]
+                    },
+                    options: {
+                        scales: {
+                            y: {
+                                beginAtZero: true
+                            }
+                        }
+                    }
+                });
+            </script>
+
+            <hr>
+        <?php endforeach; ?>
     </div>
 
 </body>
 </html>
+
