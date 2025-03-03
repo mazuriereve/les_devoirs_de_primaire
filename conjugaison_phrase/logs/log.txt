@@ -167,5 +167,14 @@
         "method": "POST",
         "user": "aze",
         "module": "Conjugaison phrase"
+    },
+    {
+        "timestamp": "2025-03-03 17:39:03",
+        "ip": "127.0.0.1",
+        "page": "index.php",
+        "method": "GET",
+        "user": "Inconnu",
+        "module": "Conjugaison phrase",
+        "event": "DÉBUT SESSION"
     }
 ]

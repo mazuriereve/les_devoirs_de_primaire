@@ -15,5 +15,14 @@
         "method": "POST",
         "user": "aze",
         "module": "addition"
+    },
+    {
+        "timestamp": "2025-03-03 17:39:00",
+        "ip": "127.0.0.1",
+        "page": "index.php",
+        "method": "GET",
+        "user": "Inconnu",
+        "module": "addition",
+        "event": "DÉBUT SESSION"
     }
 ]

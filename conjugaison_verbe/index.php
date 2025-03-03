@@ -63,7 +63,7 @@ if (!$user) {
 							<h2>Tu vas devoir conjuguer <?php echo ''.$_SESSION['nbMaxQuestions'].'' ?> verbes.</h2><br />
 							<h3>Mais avant, Quel est ton prénom ?</h3>
 							<form action="./question.php" method="post">
-								<input type="text" id="prenom" name="prenom" autocomplete="off" autofocus><br /><br /><br />
+                            	<input type="text" id="prenom" name="prenom" autocomplete="off" autofocus value="<?php echo htmlspecialchars($user['prenom']); ?>" readonly><br /><br /><br />
 								<input type="submit" value="Commencer">
 							</form>
 						
