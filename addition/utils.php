@@ -4,7 +4,6 @@
 function log_adresse_ip($cheminFichierLog, $nomPage, $sessionData = []) {
     date_default_timezone_set('Europe/Paris');
 
-
     // Récupération des informations de base
     $logEntry = [
         'timestamp' => (new DateTime())->format('Y-m-d H:i:s'),
@@ -12,6 +11,7 @@ function log_adresse_ip($cheminFichierLog, $nomPage, $sessionData = []) {
         'page' => $nomPage,
         'method' => $_SERVER['REQUEST_METHOD'] ?? 'UNKNOWN',
         'user' => $_SESSION['prenom'] ?? 'Inconnu',
+        'module' => 'addition', 
     ];
 
     // Si une question est concernée, l'ajouter au log
@@ -33,6 +33,11 @@ function log_adresse_ip($cheminFichierLog, $nomPage, $sessionData = []) {
         $logEntry['event'] = "Accès irrégulier";
     }
 
+    // Ajouter le module dans le log
+    if (isset($_SESSION['module'])) {
+        $logEntry['module'] = $_SESSION['module']; 
+    }
+
     // Lire le fichier JSON existant
     $logs = [];
     if (file_exists($cheminFichierLog)) {
@@ -45,9 +50,18 @@ function log_adresse_ip($cheminFichierLog, $nomPage, $sessionData = []) {
     // Ajouter le nouvel événement
     $logs[] = $logEntry;
 
+    // Ajouter le score global à la fin du fichier JSON 
+    if ($nomPage == 'fin.php' && isset($_SESSION['nbBonneReponse'])) {
+        $logs[] = [
+            'score_global' => $_SESSION['nbBonneReponse'] , // Ajout du score global à la fin
+            'module' => 'addition', 
+        ];
+    }
+
     // Réécrire le fichier JSON avec les logs mis à jour
     file_put_contents($cheminFichierLog, json_encode($logs, JSON_PRETTY_PRINT | JSON_UNESCAPED_UNICODE));
 }
+
 
 ?>
 
