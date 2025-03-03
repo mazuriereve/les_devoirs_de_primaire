@@ -14,15 +14,46 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
     if ($user && password_verify($password, $user["mot_de_passe"])) {
         $_SESSION["user"] = $user;
-        echo "Connexion réussie ! <a href='profil.php'>Aller au profil</a><a href='index.html'>Aller aux exercices</a>";
+        echo "<script>alert('Connexion réussie !'); window.location.href='profil.php';</script>";
     } else {
-        echo "Identifiants incorrects.";
+        echo "<script>alert('Identifiants incorrects !');</script>";
     }
 }
 ?>
-<form method="post">
-    <input type="text" name="nom" placeholder="Nom" required>
-    <input type="text" name="prenom" placeholder="Prénom" required>
-    <input type="password" name="password" placeholder="Mot de passe" required>
-    <button type="submit">Se connecter</button>
-</form>
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <title>Connexion</title>
+</head>
+<body>
+
+    <nav class="navbar navbar-expand-lg navbar-dark bg-primary">
+        <div class="container">
+        <a href="register.php">Inscription</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item"><a class="nav-link" href="profil.php">Profil</a></li>
+                    <li class="nav-item"><a class="nav-link" href="logout.php">Déconnexion</a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+   
+    <div class="container">
+        <h2>Connexion</h2>
+        <form method="post">
+            <input type="text" name="nom" placeholder="Nom" required><br>
+            <input type="text" name="prenom" placeholder="Prénom" required><br>
+            <input type="password" name="password" placeholder="Mot de passe" required><br>
+            <button type="submit">Se connecter</button>
+        </form>
+    </div>
+</body>
+</html>

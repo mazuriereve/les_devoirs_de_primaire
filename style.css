@@ -1,0 +1,65 @@
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f4f4f4;
+    margin: 0;
+    padding: 0;
+}
+
+.container {
+    width: 50%;
+    margin: auto;
+    background: white;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+    margin-top: 50px;
+}
+
+h2 {
+    text-align: center;
+}
+
+.navbar {
+    background: #007bff;
+    padding: 10px;
+    text-align: center;
+}
+
+.navbar a {
+    color: white;
+    margin: 0 15px;
+    text-decoration: none;
+}
+
+.navbar a:hover {
+    text-decoration: underline;
+}
+
+body {
+    background-color: grey;
+}
+
+.hero {
+    background: url('./images/NO.jpg') no-repeat center;
+    background-size: cover;
+    height: 430px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: rgb(0, 0, 0);
+    text-shadow: 2px 2px 5px black;
+}
+.exercise-card {
+    background-color: #d6d6d6;
+    border: 3px solid #ff7700;
+    text-align: center;
+    padding: 20px;
+    border-radius: 10px;
+}
+footer {
+    background-color: #45a1ff;
+    color: white;
+    text-align: center;
+    padding: 15px;
+    margin-top: 20px;
+}

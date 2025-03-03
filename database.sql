@@ -10,3 +10,13 @@ CREATE TABLE users (
     date_creation TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
     mot_de_passe VARCHAR(255) NOT NULL
 );
+
+
+CREATE TABLE logs (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    date TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    ip VARCHAR(45),
+    utilisateur VARCHAR(255),
+    page VARCHAR(255),
+    navigateur TEXT
+);
