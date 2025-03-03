@@ -360,5 +360,23 @@
         "method": "POST",
         "user": "Inconnu",
         "module": "soustraction"
+    },
+    {
+        "timestamp": "2025-03-03 15:43:14",
+        "ip": "127.0.0.1",
+        "page": "index.php",
+        "method": "GET",
+        "user": "Inconnu",
+        "module": "soustraction",
+        "event": "DÉBUT SESSION"
+    },
+    {
+        "timestamp": "2025-03-03 15:43:29",
+        "ip": "127.0.0.1",
+        "page": "index.php",
+        "method": "GET",
+        "user": "Inconnu",
+        "module": "soustraction",
+        "event": "DÉBUT SESSION"
     }
 ]
