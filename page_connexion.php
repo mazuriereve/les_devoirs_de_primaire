@@ -1,6 +1,7 @@
 <?php
 session_start();
 $pdo = new PDO("mysql:host=localhost;dbname=devoirs_primaires", "root", "root");
+$pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION); // Affiche les erreurs SQL
 
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $nom = $_POST["nom"];
@@ -10,16 +11,22 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $sql = "SELECT * FROM users WHERE nom = ? AND prenom = ?";
     $stmt = $pdo->prepare($sql);
     $stmt->execute([$nom, $prenom]);
-    $user = $stmt->fetch();
+    $user = $stmt->fetch(PDO::FETCH_ASSOC);
 
-    if ($user && password_verify($password, $user["mot_de_passe"])) {
-        $_SESSION["user"] = $user;
-        echo "<script>alert('Connexion réussie !'); window.location.href='profil.php';</script>";
+    if ($user) {
+        if (password_verify($password, $user["mot_de_passe"])) {
+            $_SESSION["user_id"] = $user["id"]; // Stocke l'ID utilisateur en session
+            echo "<script>alert('Connexion réussie !'); window.location.href='index.php';</script>";
+            exit;
+        } else {
+            echo "<script>alert('Mot de passe incorrect !');</script>";
+        }
     } else {
-        echo "<script>alert('Identifiants incorrects !');</script>";
+        echo "<script>alert('Utilisateur non trouvé !');</script>";
     }
 }
 ?>
+
 <!DOCTYPE html>
 <html lang="fr">
 <head>
@@ -30,22 +37,6 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 </head>
 <body>
 
-    <nav class="navbar navbar-expand-lg navbar-dark bg-primary">
-        <div class="container">
-        <a href="register.php">Inscription</a>
-            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
-                <span class="navbar-toggler-icon"></span>
-            </button>
-            <div class="collapse navbar-collapse" id="navbarNav">
-                <ul class="navbar-nav ms-auto">
-                    <li class="nav-item"><a class="nav-link" href="profil.php">Profil</a></li>
-                    <li class="nav-item"><a class="nav-link" href="logout.php">Déconnexion</a></li>
-                </ul>
-            </div>
-        </div>
-    </nav>
-
-   
     <div class="container">
         <h2>Connexion</h2>
         <form method="post">

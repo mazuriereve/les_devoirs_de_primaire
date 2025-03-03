@@ -18,7 +18,6 @@
 
 	log_adresse_ip("logs/logs.json", "question.php", ["question_numero" => $numQuestion]);
 
-	
 ?>
 
 <!doctype html>

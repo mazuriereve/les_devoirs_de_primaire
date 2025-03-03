@@ -35,7 +35,8 @@
 						
 						
 						
-						
+							<a href="../index.php"> Retour à l'accueil </a>
+
 							<h1>Bonjour !</h1><br />
 							<h2>Nous allons faire du calcul mental. Tu devras faire <?php echo ''.$_SESSION['nbMaxQuestions'].'' ?> calculs.</h2><br />
 							<h3>Mais avant, Quel est ton prénom ?</h3>

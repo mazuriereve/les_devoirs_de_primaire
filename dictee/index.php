@@ -28,7 +28,8 @@
 						
 						
 						
-						
+							<a href="../index.php"> Retour à l'accueil </a>
+
 							<h1>Bonjour !</h1><br />
 							<h2>Nous allons faire une dictée de <?php echo ''.$_SESSION['nbMaxQuestions'].'' ?> mots.</h2><br />
 							<h3>Mais avant, Quel est ton prénom ?</h3><br />

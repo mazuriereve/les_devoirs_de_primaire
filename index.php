@@ -1,3 +1,36 @@
+<?php
+session_start();
+
+// Vérifie si l'utilisateur est connecté
+if (!isset($_SESSION["user_id"])) {
+    // Redirige vers la page de connexion si l'utilisateur n'est pas authentifié
+    header("Location: page_connexion.php");
+    exit();
+}
+
+// Connexion à la base de données
+$pdo = new PDO("mysql:host=localhost;dbname=devoirs_primaires", "root", "root");
+$pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+
+// Récupère les informations de l'utilisateur connecté
+$user_id = $_SESSION["user_id"];
+$sql = "SELECT prenom FROM users WHERE id = ?";
+$stmt = $pdo->prepare($sql);
+$stmt->execute([$user_id]);
+$user = $stmt->fetch(PDO::FETCH_ASSOC);
+
+// Vérifie si l'utilisateur existe
+if (!$user) {
+    session_destroy();
+    header("Location: page_connexion.php");
+    exit();
+}
+
+// Stocke le prénom de l'utilisateur
+$prenom = htmlspecialchars($user["prenom"]);
+?>
+
+
 <!DOCTYPE html>
 <html lang="fr">
 <head>
@@ -56,8 +89,8 @@
     <!-- Hero Section -->
     <div class="hero">
         <div class="text-center">
-            <h1 class="fw-bold">Bonjour !</h1>
-            <h2>Que veux-tu faire ?</h2>
+        <h1 class="fw-bold">Bonjour, <?php echo htmlspecialchars($prenom); ?> !</h1>
+        <h2>Que veux-tu faire ?</h2>
         </div>
     </div>
 

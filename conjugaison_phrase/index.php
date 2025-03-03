@@ -31,11 +31,7 @@
 				<tr>
 					<td style="width:1000px;height:430px;background-image:url('./images/NO.jpg');background-repeat:no-repeat;">
 						<center>
-						
-						
-						
-						
-						
+							<a href="../index.php"> Retour à l'accueil </a>
 							<h1>Bonjour !</h1><br />
 							<h2>Tu vas devoir complèter <?php echo ''.$_SESSION['nbMaxQuestions'].'' ?> phrases avec un verbe conjugué.</h2><br />
 							<h3>Mais avant, Quel est ton prénom ?</h3>
