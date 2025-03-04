@@ -5,13 +5,19 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $nom = $_POST["nom"];
     $prenom = $_POST["prenom"];
     $classe = $_POST["classe"];
+    $role = $_POST["role"];
     $password = password_hash($_POST["password"], PASSWORD_BCRYPT);
+    $email = !empty($_POST["email"]) ? $_POST["email"] : NULL;
 
-    $sql = "INSERT INTO users (nom, prenom, classe, mot_de_passe) VALUES (?, ?, ?, ?)";
+    $sql = "INSERT INTO users (nom, prenom, classe, mot_de_passe, email, role) VALUES (?, ?, ?, ?, ?, ?)";
     $stmt = $pdo->prepare($sql);
-    $stmt->execute([$nom, $prenom, $classe, $password]);
 
-    echo "<script>alert('Inscription réussie !'); window.location.href='page_connexion.php';</script>";
+    try {
+        $stmt->execute([$nom, $prenom, $classe, $password, $email, $role]);
+        echo "<script>alert('Inscription réussie !'); window.location.href='page_connexion.php';</script>";
+    } catch (PDOException $e) {
+        echo "<script>alert('Erreur : " . $e->getMessage() . "');</script>";
+    }
 }
 ?>
 
@@ -110,16 +116,53 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         <a href="page_connexion.php">Connexion</a>
     </div>
 
-    <div class="container">
-        <h2>Inscription</h2>
-        <form method="post">
-            <input type="text" name="nom" placeholder="Nom" required><br>
-            <input type="text" name="prenom" placeholder="Prénom" required><br>
-            <input type="text" name="classe" placeholder="Classe" required><br>
-            <input type="password" name="password" placeholder="Mot de passe" required><br>
-            <button type="submit">S'inscrire</button>
-        </form>
-    </div>
+    <form method="post">
+        <input type="text" name="nom" placeholder="Nom" required><br>
+        <input type="text" name="prenom" placeholder="Prénom" required><br>
+
+        <select name="role" id="role" required onchange="toggleFields()">
+            <option value="enfant">Enfant</option>
+            <option value="enseignant">Enseignant</option>
+            <option value="parent">Parent</option>
+        </select><br>
+
+        <div id="classeField">
+            <input type="text" name="classe" id="classe" placeholder="Classe" required><br>
+        </div>
+
+        <div id="emailField" style="display: none;">
+            <input type="email" name="email" id="email" placeholder="Email"><br>
+        </div>
+
+        <input type="password" name="password" placeholder="Mot de passe" required><br>
+        <button type="submit">S'inscrire</button>
+    </form>
+
+    <!-- Fonction script qui permet de faire disparaitre un champ ou un autre en fonction du rôle de l'utilisateur-->
+    <script>
+        function toggleFields() {
+            let role = document.getElementById("role").value;
+            let emailField = document.getElementById("emailField");
+            let classeField = document.getElementById("classeField");
+
+            if (role === "enseignant" || role === "parent") {
+                emailField.style.display = "block";
+                document.getElementById("email").setAttribute("required", "required");
+                classeField.style.display = "none";
+                document.getElementById("classe").removeAttribute("required");
+            } else {
+                emailField.style.display = "none";
+                document.getElementById("email").removeAttribute("required");
+                classeField.style.display = "block";
+                document.getElementById("classe").setAttribute("required", "required");
+            }
+        }
+
+        // Exécuter au chargement de la page pour ajuster l'affichage initial
+        document.addEventListener("DOMContentLoaded", toggleFields);
+    </script>
+
+
 
 </body>
 </html>

@@ -94,6 +94,15 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             background: #2575fc;
             color: #fff;
         }
+
+        a{
+            color : black;
+            text-decoration: none;
+        }
+
+        a:hover{
+            color : blue;
+        }
     </style>
 </head>
 <body>
@@ -104,7 +113,8 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             <input type="text" name="nom" placeholder="Nom" required><br>
             <input type="text" name="prenom" placeholder="Prénom" required><br>
             <input type="password" name="password" placeholder="Mot de passe" required><br>
-            <button type="submit">Se connecter</button>
+            <button type="submit">Se connecter</button><br>
+            <a href="inscription.php"> Vous n'avez pas de compte ? Inscrivez-vous ! </a>
         </form>
     </div>
 

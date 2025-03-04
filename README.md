@@ -43,3 +43,4 @@ Bonus :
 la fonction qui gère les logs se trouve dans utils.php
 
 
+par défault on a le rôle enfant
