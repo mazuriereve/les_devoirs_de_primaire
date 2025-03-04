@@ -32,7 +32,7 @@ En fonction des performances de l'enfant on peut visualiser depuis le profil (ac
 
 ## EN COURS
 -  Rajouter la possibilité de rajouter des exercices à mettre dans la page
- http://les_devoirs_de_primaire_mazurier.test/profils_eleves.php
+
 
 ---
 2 - Améliorer le système de logs (3 points) : Voir les répertoires logs de chaque exercice. 
@@ -69,6 +69,7 @@ Exemple : pour la multiplication, on peut, par exemple, proposer des bornes min 
 
 ## EN COURS 
 -- a mettre les commentaires dans le code , terminer les autres document (ce serai bien de les commencer enfait)
+- documents fait manque les images + document aide à l'installation
 
 
 # Installation 

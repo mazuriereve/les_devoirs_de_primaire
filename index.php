@@ -86,6 +86,7 @@ $role = $user["role"]; // Récupère le rôle de l'utilisateur
                 <ul class="navbar-nav ms-auto">
                     <?php if ($role == "enseignant"): ?>
                         <li class="nav-item"><a class="nav-link" href="profils_eleves.php">Consulter les résultats de mes élèves</a></li>
+                        <li class="nav-item"><a class="nav-link" href="menu_creation.php">Créer des exercices</a></li>
                     <?php else: ?>
                         <li class="nav-item"><a class="nav-link" href="profil.php">Profil</a></li>
                     <?php endif; ?>

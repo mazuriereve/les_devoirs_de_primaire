@@ -38,3 +38,17 @@ CREATE TABLE professeurs_eleves (
     FOREIGN KEY (professeur_id) REFERENCES users(id) ON DELETE CASCADE,
     FOREIGN KEY (eleve_id) REFERENCES users(id) ON DELETE CASCADE
 );
+
+CREATE TABLE exercices_comprehension (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    texte TEXT NOT NULL
+);
+
+
+CREATE TABLE questions_comprehension (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    exercice_id INT,
+    question TEXT NOT NULL,
+    reponse_correcte TEXT NOT NULL,
+    FOREIGN KEY (exercice_id) REFERENCES exercices_comprehension(id)
+);
