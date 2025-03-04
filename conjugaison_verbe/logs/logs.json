@@ -1,0 +1,15 @@
+[
+    {
+        "timestamp": "2025-03-04 16:01:02",
+        "ip": "127.0.0.1",
+        "page": "fin.php",
+        "method": "POST",
+        "user": "aze",
+        "module": "conjugaison verbe",
+        "event": "FIN SESSION"
+    },
+    {
+        "score_global": 1,
+        "module": "conjugaison verbe"
+    }
+]
