@@ -1,0 +1,95 @@
+[
+    {
+        "timestamp": "2025-03-04 15:26:36",
+        "ip": "127.0.0.1",
+        "page": "correction.php",
+        "method": "POST",
+        "user": "aze",
+        "module": "dictee"
+    },
+    {
+        "timestamp": "2025-03-04 15:26:39",
+        "ip": "127.0.0.1",
+        "page": "correction.php",
+        "method": "POST",
+        "user": "aze",
+        "module": "dictee"
+    },
+    {
+        "timestamp": "2025-03-04 15:26:41",
+        "ip": "127.0.0.1",
+        "page": "correction.php",
+        "method": "POST",
+        "user": "aze",
+        "module": "dictee"
+    },
+    {
+        "timestamp": "2025-03-04 15:26:44",
+        "ip": "127.0.0.1",
+        "page": "correction.php",
+        "method": "POST",
+        "user": "aze",
+        "module": "dictee"
+    },
+    {
+        "timestamp": "2025-03-04 15:26:47",
+        "ip": "127.0.0.1",
+        "page": "correction.php",
+        "method": "POST",
+        "user": "aze",
+        "module": "dictee"
+    },
+    {
+        "timestamp": "2025-03-04 15:26:49",
+        "ip": "127.0.0.1",
+        "page": "correction.php",
+        "method": "POST",
+        "user": "aze",
+        "module": "dictee"
+    },
+    {
+        "timestamp": "2025-03-04 15:26:52",
+        "ip": "127.0.0.1",
+        "page": "correction.php",
+        "method": "POST",
+        "user": "aze",
+        "module": "dictee"
+    },
+    {
+        "timestamp": "2025-03-04 15:26:54",
+        "ip": "127.0.0.1",
+        "page": "correction.php",
+        "method": "POST",
+        "user": "aze",
+        "module": "dictee"
+    },
+    {
+        "timestamp": "2025-03-04 15:26:57",
+        "ip": "127.0.0.1",
+        "page": "correction.php",
+        "method": "POST",
+        "user": "aze",
+        "module": "dictee"
+    },
+    {
+        "timestamp": "2025-03-04 15:27:00",
+        "ip": "127.0.0.1",
+        "page": "correction.php",
+        "method": "POST",
+        "user": "aze",
+        "module": "dictee"
+    },
+    {
+        "timestamp": "2025-03-04 15:27:01",
+        "ip": "127.0.0.1",
+        "page": "fin.php",
+        "method": "POST",
+        "user": "aze",
+        "module": "dictee",
+        "event": "FIN SESSION"
+    },
+    {
+        "score_global": 10,
+        "module": "dictee"
+    }
+]

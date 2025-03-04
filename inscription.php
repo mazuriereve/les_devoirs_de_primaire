@@ -1,25 +1,54 @@
 <?php
-$pdo = new PDO("mysql:host=localhost;dbname=devoirs_primaires", "root", "root");
+// Connexion à la base de données
+try {
+    $pdo = new PDO("mysql:host=localhost;dbname=devoirs_primaires", "root", "root", [
+        PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION // Active les erreurs PDO
+    ]);
+} catch (PDOException $e) {
+    die("Erreur de connexion : " . $e->getMessage());
+}
 
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
-    $nom = $_POST["nom"];
-    $prenom = $_POST["prenom"];
-    $classe = $_POST["classe"];
-    $role = $_POST["role"];
+    // Récupération et sécurisation des données
+    $nom = trim($_POST["nom"]);
+    $prenom = trim($_POST["prenom"]);
+    $role = trim($_POST["role"]);
     $password = password_hash($_POST["password"], PASSWORD_BCRYPT);
-    $email = !empty($_POST["email"]) ? $_POST["email"] : NULL;
 
-    $sql = "INSERT INTO users (nom, prenom, classe, mot_de_passe, email, role) VALUES (?, ?, ?, ?, ?, ?)";
+    // Gestion des champs optionnels avec NULL au lieu de ""
+    $email = !empty($_POST["email"]) ? trim($_POST["email"]) : NULL;
+    $classe = (!empty($_POST["classe"]) && $role === "enfant") ? trim($_POST["classe"]) : NULL;
+    $nom_enfant = (!empty($_POST["nom_enfant"]) && $role === "parent") ? trim($_POST["nom_enfant"]) : NULL;
+    $prenom_enfant = (!empty($_POST["prenom_enfant"]) && $role === "parent") ? trim($_POST["prenom_enfant"]) : NULL;
+
+    // Préparation de la requête
+    $sql = "INSERT INTO users (nom, prenom, classe, mot_de_passe, email, role, nom_enfant, prenom_enfant) 
+            VALUES (:nom, :prenom, :classe, :mot_de_passe, :email, :role, :nom_enfant, :prenom_enfant)";
+    
     $stmt = $pdo->prepare($sql);
 
+    // Association des valeurs avec gestion des NULL
+    $stmt->bindParam(':nom', $nom);
+    $stmt->bindParam(':prenom', $prenom);
+    $stmt->bindParam(':classe', $classe, $classe !== NULL ? PDO::PARAM_STR : PDO::PARAM_NULL);
+    $stmt->bindParam(':mot_de_passe', $password);
+    $stmt->bindParam(':email', $email, $email !== NULL ? PDO::PARAM_STR : PDO::PARAM_NULL);
+    $stmt->bindParam(':role', $role);
+    $stmt->bindParam(':nom_enfant', $nom_enfant, $nom_enfant !== NULL ? PDO::PARAM_STR : PDO::PARAM_NULL);
+    $stmt->bindParam(':prenom_enfant', $prenom_enfant, $prenom_enfant !== NULL ? PDO::PARAM_STR : PDO::PARAM_NULL);
+
     try {
-        $stmt->execute([$nom, $prenom, $classe, $password, $email, $role]);
-        echo "<script>alert('Inscription réussie !'); window.location.href='page_connexion.php';</script>";
+        if ($stmt->execute()) {
+            echo "<script>alert('Inscription réussie !'); window.location.href='page_connexion.php';</script>";
+        } else {
+            echo "<script>alert('Une erreur est survenue lors de l'inscription.');</script>";
+        }
     } catch (PDOException $e) {
-        echo "<script>alert('Erreur : " . $e->getMessage() . "');</script>";
+        echo "<script>alert('Erreur SQL : " . addslashes($e->getMessage()) . "');</script>";
     }
 }
 ?>
+
 
 <!DOCTYPE html>
 <html lang="fr">
@@ -134,34 +163,71 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             <input type="email" name="email" id="email" placeholder="Email"><br>
         </div>
 
+        <div id="enfantFields" style="display: none; display: flex; gap: 10px;">
+            <input type="text" name="nom_enfant" id="nom_enfant" placeholder="Nom de votre enfant">
+            <input type="text" name="prenom_enfant" id="prenom_enfant" placeholder="Prénom de votre enfant">
+        </div>
+
         <input type="password" name="password" placeholder="Mot de passe" required><br>
         <button type="submit">S'inscrire</button>
     </form>
 
-    <!-- Fonction script qui permet de faire disparaitre un champ ou un autre en fonction du rôle de l'utilisateur-->
     <script>
         function toggleFields() {
             let role = document.getElementById("role").value;
             let emailField = document.getElementById("emailField");
             let classeField = document.getElementById("classeField");
+            let enfantFields = document.getElementById("enfantFields");
 
-            if (role === "enseignant" || role === "parent") {
+            if (role === "enseignant") {
                 emailField.style.display = "block";
                 document.getElementById("email").setAttribute("required", "required");
+
                 classeField.style.display = "none";
                 document.getElementById("classe").removeAttribute("required");
-            } else {
+
+                enfantFields.style.display = "none";
+                document.getElementById("nom_enfant").removeAttribute("required");
+                document.getElementById("prenom_enfant").removeAttribute("required");
+            } 
+            else if (role === "parent") {
+                emailField.style.display = "block";
+                document.getElementById("email").setAttribute("required", "required");
+
+                classeField.style.display = "none";
+                document.getElementById("classe").removeAttribute("required");
+
+                enfantFields.style.display = "flex";
+                document.getElementById("nom_enfant").setAttribute("required", "required");
+                document.getElementById("prenom_enfant").setAttribute("required", "required");
+            } 
+            else {
                 emailField.style.display = "none";
                 document.getElementById("email").removeAttribute("required");
+
                 classeField.style.display = "block";
                 document.getElementById("classe").setAttribute("required", "required");
+
+                enfantFields.style.display = "none";
+                document.getElementById("nom_enfant").removeAttribute("required");
+                document.getElementById("prenom_enfant").removeAttribute("required");
             }
         }
 
-        // Exécuter au chargement de la page pour ajuster l'affichage initial
         document.addEventListener("DOMContentLoaded", toggleFields);
     </script>
 
+    <style>
+        #enfantFields {
+            display: none;
+            justify-content: space-between;
+            margin-bottom: 10px;
+        }
+
+        #enfantFields input {
+            width: 48%;
+        }
+    </style>
 
 
 </body>

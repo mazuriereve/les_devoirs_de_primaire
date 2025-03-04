@@ -13,6 +13,13 @@ CREATE TABLE users (
 ALTER TABLE users
 ADD COLUMN email VARCHAR(100) NOT NULL AFTER mot_de_passe,
 ADD COLUMN role ENUM('enfant', 'enseignant', 'parent') NOT NULL AFTER email;
+ADD COLUMN nom_enfant VARCHAR(255) NULL,
+ADD COLUMN prenom_enfant VARCHAR(255) NULL;
+MODIFY classe VARCHAR(255) NULL,
+MODIFY email VARCHAR(255) NULL,
+MODIFY nom_enfant VARCHAR(255) NULL,
+MODIFY prenom_enfant VARCHAR(255) NULL;
+
 
 
 CREATE TABLE logs (
