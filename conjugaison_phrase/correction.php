@@ -31,15 +31,20 @@
 					<td style="width:1000px;height:430px;background-image:url('./images/NO.jpg');background-repeat:no-repeat;">
 						<center>
 							
-							
-							
-							
-							
 							<!-- Mise en minuscule du mot entré -->
-							<?php $_POST['mot']=strtolower($_POST['mot']); ?>
-
 							<?php 
-								if($_POST['mot']==$_POST['correction']){
+							//$_POST['mot']=strtolower($_POST['mot']);
+
+							$_POST['mot'] = trim(strtolower($_POST['mot']));
+
+							$_POST['correction'] = trim(strtolower($_POST['correction']));
+
+								if($_POST['mot']===$_POST['correction']){
+
+									// Mise en place de echo pour voir le contenu des variables 
+									//echo "Ta réponse : " . $_POST['mot'] . "<br>";
+									//echo "Correction attendue : " . $_POST['correction'] . "<br>";
+
 									echo '<h1>Super '.$_SESSION['prenom'].' ! Bonne réponse.</h1>';
 									$_SESSION['nbBonneReponse']=$_SESSION['nbBonneReponse']+1;
 									$_SESSION['historique']=$_SESSION['historique'].$_POST['sujet'].' '.$_POST['mot'].' '.substr($_POST['finDePhrase'],0,-1)."\n";
@@ -47,6 +52,8 @@
 									echo '<h1>Oh non !</h1><br /><h2>la bonne réponse était : </h2><br />'.$_POST['sujet'].' <strong><u>'.$_POST['correction'].'</u></strong> '.$_POST['finDePhrase'].'<br />';
 									$_SESSION['historique']=$_SESSION['historique'].$_POST['sujet'].' ***'.$_POST['mot'].'*** '.substr($_POST['finDePhrase'],0,-2).';'.$_POST['correction']."\n";
 								}
+
+
 								echo '<br />';
 								if($_SESSION['nbQuestion']<$_SESSION['nbMaxQuestions']){
 									if($_SESSION['nbQuestion']==1)
@@ -59,7 +66,9 @@
 										}
 								}
 							?>
-							<br /><br />
+
+							
+							<br/><br/>
 							<?php
 								if($_SESSION['nbQuestion']<$_SESSION['nbMaxQuestions']){
 							?>
