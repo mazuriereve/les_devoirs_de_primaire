@@ -31,3 +31,10 @@ CREATE TABLE logs (
     navigateur TEXT
 );
 
+CREATE TABLE professeurs_eleves (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    professeur_id INT NOT NULL,
+    eleve_id INT NOT NULL,
+    FOREIGN KEY (professeur_id) REFERENCES users(id) ON DELETE CASCADE,
+    FOREIGN KEY (eleve_id) REFERENCES users(id) ON DELETE CASCADE
+);

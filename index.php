@@ -12,24 +12,27 @@ if (!isset($_SESSION["user_id"])) {
 $pdo = new PDO("mysql:host=localhost;dbname=devoirs_primaires", "root", "root");
 $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 
-// Récupère les informations de l'utilisateur connecté
+// Récupère l'ID de l'utilisateur connecté
 $user_id = $_SESSION["user_id"];
-$sql = "SELECT prenom FROM users WHERE id = ?";
+
+// Prépare et exécute la requête pour récupérer les informations de l'utilisateur
+$sql = "SELECT prenom, role FROM users WHERE id = ?";
 $stmt = $pdo->prepare($sql);
 $stmt->execute([$user_id]);
+
+// Récupère les résultats de la requête
 $user = $stmt->fetch(PDO::FETCH_ASSOC);
 
-// Vérifie si l'utilisateur existe
+// Vérifie si l'utilisateur existe dans la base de données
 if (!$user) {
     session_destroy();
     header("Location: page_connexion.php");
     exit();
 }
 
-// Stocke le prénom de l'utilisateur
-$prenom = htmlspecialchars($user["prenom"]);
+$prenom = htmlspecialchars($user["prenom"]); // Stocke le prénom de l'utilisateur 
+$role = $user["role"]; // Récupère le rôle de l'utilisateur
 ?>
-
 
 <!DOCTYPE html>
 <html lang="fr">
@@ -79,7 +82,11 @@ $prenom = htmlspecialchars($user["prenom"]);
             </button>
             <div class="collapse navbar-collapse" id="navbarNav">
                 <ul class="navbar-nav ms-auto">
-                    <li class="nav-item"><a class="nav-link" href="profil.php">Profil</a></li>
+                    <?php if ($role == "enseignant"): ?>
+                        <li class="nav-item"><a class="nav-link" href="profils_eleves.php">Consulter les résultats de mes élèves</a></li>
+                    <?php else: ?>
+                        <li class="nav-item"><a class="nav-link" href="profil.php">Profil</a></li>
+                    <?php endif; ?>
                     <li class="nav-item"><a class="nav-link" href="logout.php">Déconnexion</a></li>
                 </ul>
             </div>

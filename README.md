@@ -29,6 +29,7 @@ En fonction des performances de l'enfant on peut visualiser depuis le profil (ac
 
 ## EN COURS
 -  le système de professeur-élèves n'est pas encore fait
+- a rajouter un système ou les profs peuvent voir les logs du json et voir ou ils ont eu faux
 
 ---
 2 - Améliorer le système de logs (3 points) : Voir les répertoires logs de chaque exercice. (fait)
@@ -79,3 +80,4 @@ première amélioration pour les logs :
 
 
 
+- utililisation de bootstrap
