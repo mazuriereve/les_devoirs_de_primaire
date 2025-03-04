@@ -23,25 +23,30 @@ En fonction des performances de l'enfant on peut visualiser depuis le profil (ac
 
 ---
 
-1.5 - Ajout de rôle aux utilisateurs (10 points) : ajout des rôles enfant, enseignant et parent. Les parents peuvent voir les résultats de leurs enfants. Les enseignants peuvent voir les résultats de leurs élèves. Les enfants peuvent faire des exercices. Dans l'idéal, il faudrait que les enseignants puissent configurer (voir point 5) les exercices pour les enfants.
+1.5 - Ajout de rôle aux utilisateurs (10 points) : ajout des rôles enfant, enseignant et parent. Les parents peuvent voir les résultats de leurs enfants. Les enseignants peuvent voir les résultats de leurs élèves. Les enfants peuvent faire des exercices.
+ Dans l'idéal, il faudrait que les enseignants puissent configurer (voir point 5) les exercices pour les enfants.
+
 - Système de rôle : enfant , enseignant , parent 
 - on peut voir les scores quand on est un élève et mon parent peut voir mes résultat
+- les professeurs peuvent avoir la liste de leurs élèves , voir leur profil et leur résultat et avoir accès aux fichiers pour chaque test.
 
 ## EN COURS
--  le système de professeur-élèves n'est pas encore fait
-- a rajouter un système ou les profs peuvent voir les logs du json et voir ou ils ont eu faux
+-  Rajouter la possibilité de rajouter des exercices à mettre dans la page
+ http://les_devoirs_de_primaire_mazurier.test/profils_eleves.php
 
 ---
-2 - Améliorer le système de logs (3 points) : Voir les répertoires logs de chaque exercice. (fait)
-- Système de logs qui s'enregistre dans deux format , le premier dans le fichier logs/log.txt ainsi qu'un fichier json qui s'enregistre dans le dossier logs et qui met à jour la base de données pour rentrer les informations.
+2 - Améliorer le système de logs (3 points) : Voir les répertoires logs de chaque exercice. 
+
+- Système de logs qui s'enregistre dans deux formats , le premier dans le fichier logs/log.txt ainsi qu'un fichier json qui s'enregistre dans le dossier logs sous la forme logs.json et qui met à jour la base de données pour rentrer les informations : id / user / date / score_global qui se calcule en fonction des résultats de la session entière 
 
 ---
 
-3 - Utiliser une base de données (3 points) : peut facilement être combiné avec le système de connexion (point 1 et 1.5). (fait)
-- Création d'une base de données localement (afin de pouvoir l'utiliser copier coller le code database.sql ainsi que modier le fichier de connexion_bdd)
+3 - Utiliser une base de données (3 points) : peut facilement être combiné avec le système de connexion (point 1 et 1.5). 
+
+- Création d'une base de données localement (afin de pouvoir l'utiliser copier coller le code database.sql ainsi que modifier le fichier de connexion_bdd.php pour modifier les champ qui correspondent a votre base de données locale.)
 
 ## EN COURS 
-- penser à modifier danscertains fichiers l'inclusion au fichier connexion_bdd.php
+- penser à modifier dans certains fichiers l'inclusion au fichier connexion_bdd.php
 
 ---
 4 - Améliorer le système d'affichage des résultats (2 points) : Peut être naturellement combiné avec le point 1 (stats sur profil).

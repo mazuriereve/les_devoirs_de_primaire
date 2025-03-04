@@ -7,46 +7,59 @@ if (!isset($_SESSION["user_id"])) {
     exit();
 }
 
-// Connexion à la base de données
-$pdo = new PDO("mysql:host=localhost;dbname=devoirs_primaires", "root", "root");
-$pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+// Inclure la connexion à la base de données depuis le fichier connexion_bdd.php
+include 'connexion_bdd.php';
 
 // Récupère les infos de l'utilisateur connecté
 $user_id = $_SESSION["user_id"];
 $sql = "SELECT id, prenom, nom, classe, date_creation, email, role, nom_enfant, prenom_enfant  
         FROM users WHERE id = ?";
-$stmt = $pdo->prepare($sql);
-$stmt->execute([$user_id]);
-$user = $stmt->fetch(PDO::FETCH_ASSOC);
 
-// Voir si on detecte le user connecté
-//echo $user_id;
+// Préparer la requête avec mysqli
+if ($stmt = $conn->prepare($sql)) {
+    $stmt->bind_param("i", $user_id); // Associer l'ID de l'utilisateur à la requête
+    $stmt->execute();
+    $result = $stmt->get_result();
+    $user = $result->fetch_assoc();
+    
+    // Si l'utilisateur n'existe pas, détruit la session et redirige
+    if (!$user) {
+        session_destroy();
+        header("Location: page_connexion.php");
+        exit();
+    }
+    
+    // Récupère les scores par module pour l'utilisateur
+    $sql_scores = "SELECT module, score_global, date FROM logs WHERE user = ? ORDER BY date DESC";
+    
+    // Préparer la requête pour les scores
+    if ($stmt_scores = $conn->prepare($sql_scores)) {
+        $stmt_scores->bind_param("i", $user["id"]); // On utilise ici l'ID de l'utilisateur pour la requête
+        $stmt_scores->execute();
+        $result_scores = $stmt_scores->get_result();
+        $scores = $result_scores->fetch_all(MYSQLI_ASSOC);
+        
+        // Regroupement des scores par module
+        $modules_scores = [];
+        foreach ($scores as $score) {
+            $modules_scores[$score['module']][] = $score['score_global'];
+        }
 
-// Si l'utilisateur n'existe pas, détruit la session et redirige
-if (!$user) {
-    session_destroy();
-    header("Location: page_connexion.php");
-    exit();
-}
-
-// Récupère les scores par module pour l'utilisateur
-$sql_scores = "SELECT module, score_global , date FROM logs WHERE user = ? ORDER BY date DESC";
-$stmt_scores = $pdo->prepare($sql_scores);
-$stmt_scores->execute([$user["prenom"]]); // On utilise le prénom ici, mais cela pourrait être un autre ID 
-$scores = $stmt_scores->fetchAll(PDO::FETCH_ASSOC);
-
-// Regroupement des scores par module
-$modules_scores = [];
-foreach ($scores as $score) {
-    $modules_scores[$score['module']][] = $score['score_global'];
-}
-
-// Calcul de la moyenne des scores pour chaque module
-$average_scores = [];
-foreach ($modules_scores as $module => $module_scores) {
-    $total_score = array_sum($module_scores);
-    $count_scores = count($module_scores);
-    $average_scores[$module] = $count_scores > 0 ? $total_score / $count_scores : 0;
+        // Calcul de la moyenne des scores pour chaque module
+        $average_scores = [];
+        foreach ($modules_scores as $module => $module_scores) {
+            $total_score = array_sum($module_scores);
+            $count_scores = count($module_scores);
+            $average_scores[$module] = $count_scores > 0 ? $total_score / $count_scores : 0;
+        }
+    } else {
+        echo "Erreur lors de la récupération des scores.";
+    }
+    
+    // Fermer la requête préparée
+    $stmt->close();
+} else {
+    echo "Erreur lors de la récupération des informations de l'utilisateur.";
 }
 ?>
 
@@ -95,32 +108,47 @@ foreach ($modules_scores as $module => $module_scores) {
                 $user["nom"] . " " . $user["prenom"],
                 $user["prenom"] . " " . $user["nom"],
             ];
-            
-            // On fait une boucle pour chercher dans toute la table logs , tout les scores des enfants
+
+            // On fait une boucle pour chercher dans toute la table logs, tous les scores des enfants
             foreach ($possible_user_ids as $user_id) {
-                $sql_scores = "SELECT module, score_global FROM logs WHERE user = :user ORDER BY date DESC";
-                $stmt_scores = $pdo->prepare($sql_scores);
-                $stmt_scores->execute([':user' => $user_id]);
-                $scores = $stmt_scores->fetchAll(PDO::FETCH_ASSOC);
-        
-                if (!empty($scores)) {
-                    break; // Dès qu'on trouve des scores, on arrête la boucle
+                // Préparer la requête avec mysqli
+                $sql_scores = "SELECT module, score_global FROM logs WHERE user = ? ORDER BY date DESC";
+                
+                if ($stmt_scores = $conn->prepare($sql_scores)) {
+                    // Lier l'utilisateur à la requête
+                    $stmt_scores->bind_param("s", $user_id); // 's' pour string
+
+                    // Exécuter la requête
+                    $stmt_scores->execute();
+
+                    // Récupérer les résultats
+                    $result_scores = $stmt_scores->get_result();
+                    $scores = $result_scores->fetch_all(MYSQLI_ASSOC);
+                    
+                    // Si des scores sont trouvés, on sort de la boucle
+                    if (!empty($scores)) {
+                        break;
+                    }
+                } else {
+                    echo "Erreur lors de la préparation de la requête.";
                 }
             }
-            
-            // Pour vérifier qu'on a des scores pour l'enfant et qu'on arrive à les obtenir
-            //echo "<pre>";
-            //print_r($scores); // Vérifie si les scores sont récupérés
-            //echo "</pre>";
         }
 
+        // Si l'utilisateur est un enfant et qu'on a des scores, on les regroupe par module
         if ($user["role"] === "enfant" && !empty($scores)) {
-            $modules_scores = [];   // Regrouper les scores par module avec une liste vide par défaut
+            $modules_scores = [];   // Regrouper les scores par module
             foreach ($scores as $score) {
                 $modules_scores[$score['module']][] = $score['score_global'];
             }
         }
+
+        // Pour vérifier que les scores sont bien récupérés (décommentez si nécessaire)
+        // echo "<pre>";
+        // print_r($modules_scores); // Vérifie si les scores sont regroupés correctement
+        // echo "</pre>";
         ?>
+
 
             <!-- Affichage des résultats -->
             <h3>Liste des  performances :</h3>
@@ -136,10 +164,23 @@ foreach ($modules_scores as $module => $module_scores) {
                     <tbody>
                         <?php
                         // Récupérer les scores et les dates pour ce module spécifique
-                        $sql_scores = "SELECT module, score_global, date FROM logs WHERE user = :user AND module = :module ORDER BY date DESC";
-                        $stmt_scores = $pdo->prepare($sql_scores);
-                        $stmt_scores->execute([':user' => $user["prenom"], ':module' => $module]); // Assure-toi d'utiliser l'ID si nécessaire
-                        $scores = $stmt_scores->fetchAll(PDO::FETCH_ASSOC);
+                        $sql_scores = "SELECT module, score_global, date FROM logs WHERE user = ? AND module = ? ORDER BY date DESC";
+                        // Préparer la requête avec mysqli
+                        $stmt_scores = $conn->prepare($sql_scores); // Utilisation de la connexion $conn (mysqli)
+
+                        if ($stmt_scores) {
+                            // Lier les paramètres
+                            $stmt_scores->bind_param("ss", $user["prenom"], $module); // 'ss' pour string (user et module)
+
+                            // Exécuter la requête
+                            $stmt_scores->execute();
+
+                            // Récupérer les résultats
+                            $result_scores = $stmt_scores->get_result();
+                            $scores = $result_scores->fetch_all(MYSQLI_ASSOC);
+                        } else {
+                            echo "Erreur lors de la préparation de la requête.";
+                        }
 
                         foreach ($scores as $score): ?>
                             <tr>
@@ -190,20 +231,33 @@ foreach ($modules_scores as $module => $module_scores) {
         <?php
         if ($user["role"] === "parent" && !empty($user["nom_enfant"]) && !empty($user["prenom_enfant"])) {
             // Récupérer les scores de l'enfant depuis la table logs
-
-            $sql_scores = "SELECT module, score_global FROM logs WHERE user = :user";
-            $stmt_scores = $pdo->prepare($sql_scores);
-            $stmt_scores->execute([':user' => $user["prenom_enfant"]]);
-
-            while ($row = $stmt_scores->fetch(PDO::FETCH_ASSOC)) {
-                $child_scores[$row["module"]][] = $row["score_global"];
-            }
+            $sql_scores = "SELECT module, score_global FROM logs WHERE user = ?"; 
+            // Préparer la requête avec mysqli
+            $stmt_scores = $conn->prepare($sql_scores); // Utilisation de la connexion $conn (mysqli)
+        
+                if ($stmt_scores) {
+                    // Lier le paramètre :user avec la valeur $user["prenom_enfant"]
+                    $stmt_scores->bind_param("s", $user["prenom_enfant"]); // 's' pour string (prenom_enfant)
+            
+                    // Exécuter la requête
+                    $stmt_scores->execute();
+            
+                    // Récupérer les résultats
+                    $result_scores = $stmt_scores->get_result();
+            
+                    // Parcourir les résultats
+                    while ($row = $result_scores->fetch_assoc()) {
+                        $child_scores[$row["module"]][] = $row["score_global"];
+                    }
+                } else {
+                    echo "Erreur lors de la préparation de la requête.";
+                }    
+        }
 
             // Pour vérifier qu'on a des scores à son enfant        
             //echo "<pre>";
             //print_r($child_scores);
-            //echo "</pre>";
-        }
+             //echo "</pre>";
         ?>
 
         <?php if ($user["role"] === "parent" && !empty($child_scores)) : ?>
@@ -221,10 +275,24 @@ foreach ($modules_scores as $module => $module_scores) {
                     <tbody>
                         <?php
                         // Récupérer les scores et dates pour cet enfant et ce module
-                        $sql_scores = "SELECT module, score_global, date FROM logs WHERE user = :user AND module = :module ORDER BY date DESC";
-                        $stmt_scores = $pdo->prepare($sql_scores);
-                        $stmt_scores->execute([':user' => $user["prenom_enfant"], ':module' => $module]); // Assure-toi d'utiliser le prénom de l'enfant ou un ID si nécessaire
-                        $scores_with_dates = $stmt_scores->fetchAll(PDO::FETCH_ASSOC);
+                        $sql_scores = "SELECT module, score_global, date FROM logs WHERE user = ? AND module = ? ORDER BY date DESC";
+                        $stmt_scores = $conn->prepare($sql_scores);  
+
+                        if ($stmt_scores) {
+                            // Lier les paramètres :user et :module avec les valeurs correspondantes
+                            $stmt_scores->bind_param("ss", $user["prenom_enfant"], $module); // 'ss' pour deux chaînes de caractères
+
+                            // Exécuter la requête
+                            $stmt_scores->execute();
+
+                            // Récupérer les résultats
+                            $result_scores = $stmt_scores->get_result();
+
+                            // Récupérer toutes les lignes
+                            $scores_with_dates = $result_scores->fetch_all(MYSQLI_ASSOC);
+                        } else {
+                            echo "Erreur lors de la préparation de la requête.";
+                        }
 
                         foreach ($scores_with_dates as $score): ?>
                             <tr>

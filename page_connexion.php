@@ -1,19 +1,25 @@
 <?php
+// Démarre la session
 session_start();
-$pdo = new PDO("mysql:host=localhost;dbname=devoirs_primaires", "root", "root");
-$pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+
+// Inclure la connexion à la base de données
+include 'connexion_bdd.php';  // Assurez-vous que le fichier connexion_bdd.php est inclus ici
 
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $nom = $_POST["nom"];
     $prenom = $_POST["prenom"];
     $password = $_POST["password"];
 
+    // Préparer et exécuter la requête pour vérifier l'utilisateur
     $sql = "SELECT * FROM users WHERE nom = ? AND prenom = ?";
-    $stmt = $pdo->prepare($sql);
-    $stmt->execute([$nom, $prenom]);
-    $user = $stmt->fetch(PDO::FETCH_ASSOC);
+    $stmt = $conn->prepare($sql);  // Utilisation de la connexion mysqli
+    $stmt->bind_param("ss", $nom, $prenom); // Associe les variables pour la requête
+    $stmt->execute(); // Exécution de la requête
+    $result = $stmt->get_result();
+    $user = $result->fetch_assoc();
 
     if ($user) {
+        // Vérifier le mot de passe
         if (password_verify($password, $user["mot_de_passe"])) {
             $_SESSION["user_id"] = $user["id"];
             echo "<script>alert('Connexion réussie !'); window.location.href='index.php';</script>";
@@ -26,6 +32,8 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     }
 }
 ?>
+
+
 
 <!DOCTYPE html>
 <html lang="fr">

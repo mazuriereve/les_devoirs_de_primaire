@@ -1,12 +1,6 @@
 <?php
-// Connexion à la base de données
-try {
-    $pdo = new PDO("mysql:host=localhost;dbname=devoirs_primaires", "root", "root", [
-        PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION // Active les erreurs PDO
-    ]);
-} catch (PDOException $e) {
-    die("Erreur de connexion : " . $e->getMessage());
-}
+// Inclure la connexion à la base de données depuis le fichier connexion_bdd.php
+include 'connexion_bdd.php'; 
 
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
     // Récupération et sécurisation des données
@@ -21,34 +15,33 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $nom_enfant = (!empty($_POST["nom_enfant"]) && $role === "parent") ? trim($_POST["nom_enfant"]) : NULL;
     $prenom_enfant = (!empty($_POST["prenom_enfant"]) && $role === "parent") ? trim($_POST["prenom_enfant"]) : NULL;
 
-    // Préparation de la requête
+    // Préparation de la requête avec la connexion mysqli
     $sql = "INSERT INTO users (nom, prenom, classe, mot_de_passe, email, role, nom_enfant, prenom_enfant) 
-            VALUES (:nom, :prenom, :classe, :mot_de_passe, :email, :role, :nom_enfant, :prenom_enfant)";
-    
-    $stmt = $pdo->prepare($sql);
+            VALUES (?, ?, ?, ?, ?, ?, ?, ?)";
 
-    // Association des valeurs avec gestion des NULL
-    $stmt->bindParam(':nom', $nom);
-    $stmt->bindParam(':prenom', $prenom);
-    $stmt->bindParam(':classe', $classe, $classe !== NULL ? PDO::PARAM_STR : PDO::PARAM_NULL);
-    $stmt->bindParam(':mot_de_passe', $password);
-    $stmt->bindParam(':email', $email, $email !== NULL ? PDO::PARAM_STR : PDO::PARAM_NULL);
-    $stmt->bindParam(':role', $role);
-    $stmt->bindParam(':nom_enfant', $nom_enfant, $nom_enfant !== NULL ? PDO::PARAM_STR : PDO::PARAM_NULL);
-    $stmt->bindParam(':prenom_enfant', $prenom_enfant, $prenom_enfant !== NULL ? PDO::PARAM_STR : PDO::PARAM_NULL);
+    // Préparer la requête
+    if ($stmt = $conn->prepare($sql)) {
+        // Lier les paramètres
+        $stmt->bind_param("ssssssss", $nom, $prenom, $classe, $password, $email, $role, $nom_enfant, $prenom_enfant);
 
-    try {
-        if ($stmt->execute()) {
-            echo "<script>alert('Inscription réussie !'); window.location.href='page_connexion.php';</script>";
-        } else {
-            echo "<script>alert('Une erreur est survenue lors de l'inscription.');</script>";
+        try {
+            // Exécution de la requête
+            if ($stmt->execute()) {
+                echo "<script>alert('Inscription réussie !'); window.location.href='page_connexion.php';</script>";
+            } else {
+                echo "<script>alert('Une erreur est survenue lors de l'inscription.');</script>";
+            }
+        } catch (mysqli_sql_exception $e) {
+            echo "<script>alert('Erreur SQL : " . addslashes($e->getMessage()) . "');</script>";
         }
-    } catch (PDOException $e) {
-        echo "<script>alert('Erreur SQL : " . addslashes($e->getMessage()) . "');</script>";
+
+        // Fermer la requête préparée
+        $stmt->close();
+    } else {
+        echo "<script>alert('Erreur lors de la préparation de la requête.');</script>";
     }
 }
 ?>
-
 
 <!DOCTYPE html>
 <html lang="fr">

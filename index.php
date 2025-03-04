@@ -9,19 +9,20 @@ if (!isset($_SESSION["user_id"])) {
 }
 
 // Connexion à la base de données
-$pdo = new PDO("mysql:host=localhost;dbname=devoirs_primaires", "root", "root");
-$pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+include 'connexion_bdd.php';
 
 // Récupère l'ID de l'utilisateur connecté
 $user_id = $_SESSION["user_id"];
 
 // Prépare et exécute la requête pour récupérer les informations de l'utilisateur
 $sql = "SELECT prenom, role FROM users WHERE id = ?";
-$stmt = $pdo->prepare($sql);
-$stmt->execute([$user_id]);
+$stmt = $conn->prepare($sql);  
+$stmt->bind_param("i", $user_id);  // Utilisation de bind_param avec mysqli
+$stmt->execute();
 
 // Récupère les résultats de la requête
-$user = $stmt->fetch(PDO::FETCH_ASSOC);
+$result = $stmt->get_result();  // Utilisez get_result() pour obtenir les résultats
+$user = $result->fetch_assoc();
 
 // Vérifie si l'utilisateur existe dans la base de données
 if (!$user) {
@@ -30,9 +31,10 @@ if (!$user) {
     exit();
 }
 
-$prenom = htmlspecialchars($user["prenom"]); // Stocke le prénom de l'utilisateur 
+$prenom = htmlspecialchars($user["prenom"]); // Stocke le prénom de l'utilisateur
 $role = $user["role"]; // Récupère le rôle de l'utilisateur
 ?>
+
 
 <!DOCTYPE html>
 <html lang="fr">
