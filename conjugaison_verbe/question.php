@@ -22,7 +22,7 @@
 <html lang="fr">
 	<head>
 		<meta charset="utf-8">
-		<title>Question</title>
+		<title>Question conjuguaison verbe </title>
 	</head>
 	<body style="background-color:grey;">
 		<?php
@@ -36,11 +36,19 @@
               $temps='futur';
 	    if($alea==2)
 	      $temps='imparfait';
-            $fichier = file("verbes/".$temps.".txt");
+		
+			$nomFichierTemps = "verbes/".$temps.".txt";
+			if (!file_exists($nomFichierTemps)) {
+				die("Erreur : Le fichier $nomFichierTemps n'existe pas !");
+			}
+			
+			$fichier = file($nomFichierTemps);
+
 			$total = count($fichier);
 			$alea = mt_rand(0,$total-1);
             $verbe = $fichier[$alea];
             $verbe = substr($verbe,0,-1);
+
             $verbeSansAccent=str_replace("à","a",$verbe);
 			$verbeSansAccent=str_replace("â","a",$verbeSansAccent);
 			$verbeSansAccent=str_replace("é","e",$verbeSansAccent);
@@ -56,7 +64,15 @@
 			$verbeSansAccent=str_replace("ü","u",$verbeSansAccent);
 			$verbeSansAccent=str_replace("ÿ","y",$verbeSansAccent);
             $verbeSansAccent=str_replace("ç","c",$verbeSansAccent);
-            $nomFichier = "verbes/".$verbeSansAccent."_".$temps.".txt";
+
+			$verbeSansAccent = trim($verbeSansAccent); 
+
+			$nomFichier = "verbes/".$verbeSansAccent."_".$temps.".txt";
+
+			if (!file_exists($nomFichier)) {
+				die("Erreur : Le fichier $nomFichier n'existe pas !");
+			}
+
             $fichierVerbe = file($nomFichier);
             $reponse1 = $fichierVerbe[0];
             $reponse1 = substr($reponse1,0,-1);
@@ -76,8 +92,6 @@
 				<tr>
 					<td style="width:1000px;height:430px;background-image:url('./images/NO.jpg');background-repeat:no-repeat;">
 						<center>
-		
-		
 		
 
 							<h1>Verbe Numéro <?php echo "".$_SESSION['nbQuestion'] ?></h1><br />
@@ -100,8 +114,6 @@
                                  </tbody></table>
                                  <input type="submit" value="Valider">
 							</form>
-    
-    
     
     
     

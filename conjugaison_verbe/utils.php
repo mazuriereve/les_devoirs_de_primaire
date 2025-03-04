@@ -11,7 +11,7 @@ function log_adresse_ip($cheminFichierLog, $nomPage, $sessionData = []) {
         'page' => $nomPage,
         'method' => $_SERVER['REQUEST_METHOD'] ?? 'UNKNOWN',
         'user' => $_SESSION['prenom'] ?? 'Inconnu',
-        'module' => 'addition', 
+        'module' => 'conjugaison verbe', 
     ];
 
     // Si une question est concernée, l'ajouter au log
@@ -54,7 +54,7 @@ function log_adresse_ip($cheminFichierLog, $nomPage, $sessionData = []) {
     if ($nomPage == 'fin.php' && isset($_SESSION['nbBonneReponse'])) {
         $logs[] = [
             'score_global' => $_SESSION['nbBonneReponse'] , // Ajout du score global à la fin
-            'module' => 'addition', 
+            'module' => 'conjugaison verbe', 
         ];
     }
 

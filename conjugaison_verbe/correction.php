@@ -8,7 +8,7 @@
 		"Question numéro ".$_SESSION['nbQuestion']
 	]);
 
-	if($_POST['correction1']=="" || $_POST['correction2']=="" || $_POST['correction3']=="" || $_POST['correction4']=="" || $_POST['correction5']=="" || $_POST['correction6']==""){
+	if($_POST['correction1']==="" || $_POST['correction2']==="" || $_POST['correction3']==="" || $_POST['correction4']==="" || $_POST['correction5']==="" || $_POST['correction6']===""){
 		session_destroy();
 		session_unset();
 		unset($_POST);
@@ -33,7 +33,7 @@
 		
 							<?php
                                 $nbPointsLocal=0;
-								if($_POST['mot1']==$_POST['correction1']){
+								if(mb_strtolower(trim($_POST['mot1']), 'UTF-8') === mb_strtolower(trim($_POST['correction1']), 'UTF-8')){
 									echo 'Je/J\' '.$_POST['mot1'].' &#9989;<br />';
 									$_SESSION['nbBonneReponse']=$_SESSION['nbBonneReponse']+1;
                                     $nbPointsLocal=$nbPointsLocal+1;
@@ -42,7 +42,7 @@
                                     echo 'Je/J\' <strike>'.$_POST['mot1'].'</strike> &#10060; &#10132; '.$_POST['correction1'].'<br />';
 									$_SESSION['historique']=$_SESSION['historique'].'********Je/J\' '.$_POST['mot1'].';Je/J\' '.$_POST['correction1']."\n";
 								} 
-                                if($_POST['mot2']==$_POST['correction2']){
+								if(mb_strtolower(trim($_POST['mot2']), 'UTF-8') === mb_strtolower(trim($_POST['correction2']), 'UTF-8')){
 									echo 'Tu '.$_POST['mot2'].' &#9989;<br />';
 									$_SESSION['nbBonneReponse']=$_SESSION['nbBonneReponse']+1;
                                     $nbPointsLocal=$nbPointsLocal+1;
@@ -51,7 +51,7 @@
                                     echo 'Tu <strike>'.$_POST['mot2'].'</strike> &#10060; &#10132; '.$_POST['correction2'].'<br />';
 									$_SESSION['historique']=$_SESSION['historique'].'********Tu '.$_POST['mot2'].';Tu '.$_POST['correction2']."\n";
 								}
-								if($_POST['mot3']==$_POST['correction3']){
+								if(mb_strtolower(trim($_POST['mot3']), 'UTF-8') === mb_strtolower(trim($_POST['correction3']), 'UTF-8')){
 									echo 'Il/Elle/On '.$_POST['mot3'].' &#9989;<br />';
 									$_SESSION['nbBonneReponse']=$_SESSION['nbBonneReponse']+1;
                                     $nbPointsLocal=$nbPointsLocal+1;
@@ -60,7 +60,7 @@
                                     echo 'Il/Elle/On <strike>'.$_POST['mot3'].'</strike> &#10060; &#10132; '.$_POST['correction3'].'<br />';
 									$_SESSION['historique']=$_SESSION['historique'].'********Il/Elle/On '.$_POST['mot3'].';Il/Elle/On '.$_POST['correction3']."\n";
 								}
-								if($_POST['mot4']==$_POST['correction4']){
+								if(mb_strtolower(trim($_POST['mot4']), 'UTF-8') === mb_strtolower(trim($_POST['correction4']), 'UTF-8')){
 									echo 'Nous '.$_POST['mot4'].' &#9989;<br />';
 									$_SESSION['nbBonneReponse']=$_SESSION['nbBonneReponse']+1;
                                     $nbPointsLocal=$nbPointsLocal+1;
@@ -69,7 +69,7 @@
                                     echo 'Nous <strike>'.$_POST['mot4'].'</strike> &#10060; &#10132; '.$_POST['correction4'].'<br />';
 									$_SESSION['historique']=$_SESSION['historique'].'********Nous '.$_POST['mot4'].';Nous '.$_POST['correction4']."\n";
 								}
-								if($_POST['mot5']==$_POST['correction5']){
+								if(mb_strtolower(trim($_POST['mot5']), 'UTF-8') === mb_strtolower(trim($_POST['correction5']), 'UTF-8')){
 									echo 'Vous '.$_POST['mot5'].' &#9989;<br />';
 									$_SESSION['nbBonneReponse']=$_SESSION['nbBonneReponse']+1;
                                     $nbPointsLocal=$nbPointsLocal+1;
@@ -78,7 +78,7 @@
                                     echo 'Vous <strike>'.$_POST['mot5'].'</strike> &#10060; &#10132; '.$_POST['correction5'].'<br />';
 									$_SESSION['historique']=$_SESSION['historique'].'********Vous '.$_POST['mot5'].';Vous '.$_POST['correction5']."\n";
 								}
-								if($_POST['mot6']==$_POST['correction6']){
+								if(mb_strtolower(trim($_POST['mot6']), 'UTF-8') === mb_strtolower(trim($_POST['correction6']), 'UTF-8')){
 									echo 'Ils/Elles '.$_POST['mot6'].' &#9989;<br />';
 									$_SESSION['nbBonneReponse']=$_SESSION['nbBonneReponse']+1;
                                     $nbPointsLocal=$nbPointsLocal+1;
@@ -111,11 +111,6 @@
                                 }
 							?>
 					 
-    
-    
-    
-    
-    
     
 						</center>
 					</td>

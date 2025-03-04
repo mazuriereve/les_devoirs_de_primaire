@@ -14,7 +14,7 @@
 <html lang="fr">
 	<head>
 		<meta charset="utf-8">
-		<title>Fin de la série</title>
+		<title>Fin de la série </title>
 	</head>
 	<body style="background-color:grey;">
 		<center>
@@ -22,9 +22,7 @@
 				<tr>
 					<td style="width:1000px;height:430px;background-image:url('./images/NO.jpg');background-repeat:no-repeat;">
 						<center>
-						
-							
-														
+											
                             <?php
                              $_SESSION['nbQuestion']=$_SESSION['nbQuestion']*6;
                                 if($_SESSION['nbBonneReponse']>1)
@@ -78,7 +76,7 @@
 
 							// Récupérer les informations de la session
 							$user = $_SESSION['prenom'] ?? 'Inconnu';
-							$module = "Addition"; // Tu peux aussi le récupérer de $_SESSION si besoin
+							$module = "conjugaison verbe"; 
 							$date = (new DateTime())->format('Y-m-d H:i:s'); // Date actuelle
 							$score_global = $_SESSION['nbBonneReponse'] ?? 0; // Score global de l'utilisateur
 
@@ -97,15 +95,10 @@
 								file_put_contents($cheminFichierLog, json_encode([], JSON_PRETTY_PRINT | JSON_UNESCAPED_UNICODE));
 							}
 
-
 							// Fermer la connexion
 							$conn->close();
 
-							// Détruire la session
-							session_destroy();
-
-							//session_destroy();
-							//session_unset();						
+												
 							?>
 							<form action="./index.php" method="post">
 								<input type="submit" value="Recommencer" autofocus>
