@@ -45,8 +45,7 @@ En fonction des performances de l'enfant on peut visualiser depuis le profil (ac
 
 - Création d'une base de données localement (afin de pouvoir l'utiliser copier coller le code database.sql ainsi que modifier le fichier de connexion_bdd.php pour modifier les champ qui correspondent a votre base de données locale.)
 
-## EN COURS 
-- penser à modifier dans certains fichiers l'inclusion au fichier connexion_bdd.php
+
 
 ---
 4 - Améliorer le système d'affichage des résultats (2 points) : Peut être naturellement combiné avec le point 1 (stats sur profil).
@@ -59,7 +58,7 @@ Exemple : pour la multiplication, on peut, par exemple, proposer des bornes min 
 
 ## PAS ENCORE COMMENCE 
 
----
+--- 
 
 6 - Création d'une application pour faire du text-to-speech (10 points) : Application de bureau linux, en ligne de commande ou en back office de ce site. Attention ! De nombreux outils simples d'utilisation ne fournissent pas de résultat satisfisant !
 
