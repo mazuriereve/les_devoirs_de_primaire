@@ -18,9 +18,6 @@
 						<center>
 
 							
-							
-		
-		
 		
 							<?php 
 								if($_POST['recopie']==$_POST['correction']){

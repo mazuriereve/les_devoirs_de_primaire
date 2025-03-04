@@ -15,7 +15,7 @@
 		session_destroy();
 		session_unset();
 		unset($_POST);
-		header('Location: ./index.php');
+		header('Location: index.php');
 	}
 ?>
 
@@ -23,7 +23,7 @@
 <html lang="fr">
 	<head>
 		<meta charset="utf-8">
-		<title>Correction</title>
+		<title>Correction soustraction</title>
 	</head>
 	<body style="background-color:grey;">
 		<center>
@@ -31,8 +31,6 @@
 				<tr>
 					<td style="width:1000px;height:430px;background-image:url('./images/NO.jpg');background-repeat:no-repeat;">
 						<center>
-		
-		
 		
 							<?php 
 								if($_POST['mot']==$_POST['correction']){
@@ -60,24 +58,19 @@
 							<?php
 								if($_SESSION['nbQuestion']<$_SESSION['nbMaxQuestions']){
 							?>
-							<form action="./question.php" method="post">
+							<form action="question.php" method="post">
 								<input type="submit" value="Suite" autofocus>
 							</form>
 							<?php
 								}else{
                             ?>
-                                    <form action="./fin.php" method="post">
+                                    <form action="fin.php" method="post">
                                         <input type="submit" value="Suite" autofocus>
                                     </form>
                             <?php
                                 }
 							?>
 					 
-    
-    
-    
-    
-    
     
 						</center>
 					</td>

@@ -22,8 +22,6 @@
 				<tr>
 					<td style="width:1000px;height:430px;background-image:url('./images/NO.jpg');background-repeat:no-repeat;">
 						<center>
-						
-							
 														
 							<?php
 							if($_SESSION['nbBonneReponse']>1)
@@ -76,7 +74,7 @@
 
 							// Récupérer les informations de la session
 							$user = $_SESSION['prenom'] ?? 'Inconnu';
-							$module = "Conjugaison phrase"; // Tu peux aussi le récupérer de $_SESSION si besoin
+							$module = "Conjugaison phrase"; 
 							$date = (new DateTime())->format('Y-m-d H:i:s'); // Date actuelle
 							$score_global = $_SESSION['nbBonneReponse'] ?? 0; // Score global de l'utilisateur
 
@@ -87,32 +85,20 @@
 							$stmt->execute();
 							$stmt->close();
 
-							// Supprimer le fichier JSON après insertion (optionnel)
+							// Supprimer le fichier JSON après insertion
 							//unlink($cheminFichierLog);
 
 							$cheminFichierLog = "logs/logs.json";
 							if (!file_exists($cheminFichierLog)) {
 								file_put_contents($cheminFichierLog, json_encode([], JSON_PRETTY_PRINT | JSON_UNESCAPED_UNICODE));
 							}
-
-
 							// Fermer la connexion
 							$conn->close();
 
-							// Détruire la session
-							session_destroy();
-
-							//session_destroy();
-							//session_unset();
-
-							
 							?>
-							<form action="./index.php" method="post">
+							<form action="index.php" method="post">
 								<input type="submit" value="Recommencer" autofocus>
 							</form>
-    
-    
-    
     
     
 						</center>
@@ -125,7 +111,8 @@
 				</tr>
 			</table>
 		</center>
-		<br />
+		<br/>
+
 		<footer style="background-color: #45a1ff;">
 			<center>
 				Rémi Synave<br />

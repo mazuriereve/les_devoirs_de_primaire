@@ -17,14 +17,11 @@
 									log_adresse_ip("logs/log.txt","affiche_resultat.php");
 							?>
 						
-						
-						
 							<h3>Quel est le prénom de l'enfant ?</h3><br />
 							<form action="./affiche_resultat.php" method="get">
 								<input type="text" id="prenomRes" name="prenomRes" autocomplete="off"><br /><br /><br />
 								<input type="submit" value="Afficher les résultats">
 							</form>
-						
 						
 							<?php
 								}else{
@@ -52,11 +49,7 @@
 										echo '<h2>TOTAL : '.$total.' POINT</h2>';
 								}
 							?>
-							
-							
-															
-						
-						
+					
 						
 						</center>
 					</td>

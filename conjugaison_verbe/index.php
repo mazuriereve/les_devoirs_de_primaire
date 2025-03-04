@@ -68,10 +68,6 @@ if (!$user) {
 							</form>
 						
 						
-						
-						
-						
-						
 						</center>
 					</td>
 					<td style="width:280px;height:430px;background-image:url('./images/NE.jpg');background-repeat:no-repeat;"></td>

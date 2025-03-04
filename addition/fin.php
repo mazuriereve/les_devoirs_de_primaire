@@ -15,7 +15,7 @@
 <html lang="fr">
 	<head>
 		<meta charset="utf-8">
-		<title>Fin de la série</title>
+		<title>Fin de la série addition</title>
 	</head>
 	<body style="background-color:grey;">
 		<center>
@@ -95,23 +95,16 @@
 							if (!file_exists($cheminFichierLog)) {
 								file_put_contents($cheminFichierLog, json_encode([], JSON_PRETTY_PRINT | JSON_UNESCAPED_UNICODE));
 							}
-
-
 							// Fermer la connexion
 							$conn->close();
 
-							// Détruire la session
-							session_destroy();
-
-							//session_destroy();
-							//session_unset();
 							?>
-							<form action="./index.php" method="post">
-								<input type="submit" value="Recommencer" autofocus>
+							<form action="index.php" method="post">
+								<input type="submit" value="Recommencer le test" autofocus>
 							</form>
-    
-    
-    
+
+							<a href="../index.php">Retour à l'accueil principal</a>
+
     
     
 						</center>

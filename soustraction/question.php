@@ -57,10 +57,6 @@
 					<td style="width:1000px;height:430px;background-image:url('./images/NO.jpg');background-repeat:no-repeat;">
 						<center>
 		
-		
-		
-
-		
 							<h1>Question Numéro <?php echo "".$_SESSION['nbQuestion']."" ?></h1><br />
 							<h3>Combien fait le calcul suivant ?</h3>
 							<h3><?php echo ''.$operation.' = ?'; ?></h3>
@@ -72,8 +68,6 @@
 								<input type="text" id="mot" name="mot" autocomplete="off" autofocus><br /><br /><br />
 								<input type="submit" value="Valider">
 							</form>
-    
-    
     
     
     

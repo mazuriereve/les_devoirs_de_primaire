@@ -3,7 +3,12 @@
 	session_start();
     include 'utils.php';
 	
-    log_adresse_ip("logs/log.txt","correction.php - ".$_SESSION['prenom']." - Question numéro ".$_SESSION['nbQuestion']);
+    log_adresse_ip("logs/log.txt", "correction.php", [
+		$_SESSION['prenom'], 
+		"Question numéro ".$_SESSION['nbQuestion']
+	]);
+
+	log_adresse_ip("logs/logs.json", "correction.php");
 
 
 	if($_POST['correction']==""){
@@ -26,9 +31,6 @@
 				<tr>
 					<td style="width:1000px;height:430px;background-image:url('./images/NO.jpg');background-repeat:no-repeat;">
 						<center>
-							
-							
-							
 							
 							
 							<!-- Mise en minuscule du mot entré -->
@@ -87,17 +89,12 @@
 								}		
 							?>
 							<br /><br />
-							<form action="./raz.php" method="post">
-								<input type="submit" value="Tout recommencer">
+							<form action="raz.php" method="post">
+								<input type="submit" value="Recommencer le test intégralement">
 							</form>
 
+							<a href="../index.php"> Retour à l'accueil principal </a>
 
-
-
-
-
-
-    
     
 						</center>
 					</td>

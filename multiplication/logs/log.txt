@@ -1,7 +1,91 @@
-[27/02/2025 08h15m21s] - ::1 : index.php
-[03/03/2025 08h16m13s] - 127.0.0.1 : index.php
-[03/03/2025 14h43m16s] - 127.0.0.1 : index.php
-[03/03/2025 16h39m05s] - 127.0.0.1 : index.php
-[03/03/2025 16h39m08s] - 127.0.0.1 : index.php
-[03/03/2025 16h39m17s] - 127.0.0.1 : index.php
-[03/03/2025 16h39m45s] - 127.0.0.1 : index.php
+[
+    {
+        "timestamp": "2025-03-04 13:30:48",
+        "ip": "127.0.0.1",
+        "page": "index.php",
+        "method": "GET",
+        "user": "Inconnu",
+        "module": "multiplication",
+        "event": "DÉBUT SESSION"
+    },
+    {
+        "timestamp": "2025-03-04 13:30:51",
+        "ip": "127.0.0.1",
+        "page": "correction.php",
+        "method": "POST",
+        "user": "aze",
+        "module": "multiplication"
+    },
+    {
+        "timestamp": "2025-03-04 13:30:51",
+        "ip": "127.0.0.1",
+        "page": "correction.php",
+        "method": "POST",
+        "user": "aze",
+        "module": "multiplication"
+    },
+    {
+        "timestamp": "2025-03-04 13:30:52",
+        "ip": "127.0.0.1",
+        "page": "correction.php",
+        "method": "POST",
+        "user": "aze",
+        "module": "multiplication"
+    },
+    {
+        "timestamp": "2025-03-04 13:30:52",
+        "ip": "127.0.0.1",
+        "page": "correction.php",
+        "method": "POST",
+        "user": "aze",
+        "module": "multiplication"
+    },
+    {
+        "timestamp": "2025-03-04 13:30:52",
+        "ip": "127.0.0.1",
+        "page": "correction.php",
+        "method": "POST",
+        "user": "aze",
+        "module": "multiplication"
+    },
+    {
+        "timestamp": "2025-03-04 13:30:52",
+        "ip": "127.0.0.1",
+        "page": "correction.php",
+        "method": "POST",
+        "user": "aze",
+        "module": "multiplication"
+    },
+    {
+        "timestamp": "2025-03-04 13:30:53",
+        "ip": "127.0.0.1",
+        "page": "correction.php",
+        "method": "POST",
+        "user": "aze",
+        "module": "multiplication"
+    },
+    {
+        "timestamp": "2025-03-04 13:30:53",
+        "ip": "127.0.0.1",
+        "page": "correction.php",
+        "method": "POST",
+        "user": "aze",
+        "module": "multiplication"
+    },
+    {
+        "timestamp": "2025-03-04 13:30:54",
+        "ip": "127.0.0.1",
+        "page": "correction.php",
+        "method": "POST",
+        "user": "aze",
+        "module": "multiplication"
+    },
+    {
+        "timestamp": "2025-03-04 13:30:55",
+        "ip": "127.0.0.1",
+        "page": "correction.php",
+        "method": "POST",
+        "user": "aze",
+        "module": "multiplication"
+    }
+]

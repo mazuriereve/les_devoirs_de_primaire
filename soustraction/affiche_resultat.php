@@ -2,7 +2,7 @@
 <html lang="fr">
 	<head>
 		<meta charset="utf-8">
-		<title>Résultats</title>
+		<title>Résultats soustraction</title>
 	</head>
 	<body style="background-color:grey;">
 		<center>
@@ -54,10 +54,6 @@
 							?>
 							
 							
-															
-						
-						
-						
 						</center>
 					</td>
 					<td style="width:280px;height:430px;background-image:url('./images/NE.jpg');background-repeat:no-repeat;"></td>

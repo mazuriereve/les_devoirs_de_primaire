@@ -33,8 +33,6 @@
 					<td style="width:1000px;height:430px;background-image:url('./images/NO.jpg');background-repeat:no-repeat;">
 						<center>
 		
-		
-		
 							<?php 
 								if($_POST['mot']==$_POST['correction']){
 									echo '<h1>Super '.$_SESSION['prenom'].' ! Bonne réponse.</h1>';

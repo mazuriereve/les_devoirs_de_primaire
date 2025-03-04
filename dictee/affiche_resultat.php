@@ -2,7 +2,7 @@
 <html lang="fr">
 	<head>
 		<meta charset="utf-8">
-		<title>Résultats</title>
+		<title>Résultats dictée</title>
 	</head>
 	<body style="background-color:grey;">
 		<center>
@@ -16,7 +16,6 @@
 									include 'utils.php';
 									log_adresse_ip("logs/log.txt","affiche_resultat.php");
 							?>
-						
 						
 						
 							<h3>Quel est le prénom de l'enfant ?</h3><br />
@@ -54,9 +53,6 @@
 							?>
 							
 							
-															
-						
-						
 						
 						</center>
 					</td>

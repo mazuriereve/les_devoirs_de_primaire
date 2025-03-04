@@ -39,8 +39,6 @@
 
 		
 		
-
-		
 							<h1>Question Numéro <?php echo "".$_SESSION['nbQuestion']."" ?></h1><br />
 							<audio autoplay controls>
 								<source src="./<?php echo './sons/'.$ligneFichier[1].''?>" type="audio/mpeg">

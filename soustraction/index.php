@@ -48,8 +48,6 @@ $user = $stmt->fetch(PDO::FETCH_ASSOC);
 						<center>
 						
 						
-						
-						
 							<a href="../index.php"> Retour à l'accueil </a>
 
 							<h1>Bonjour !</h1><br />
@@ -59,9 +57,6 @@ $user = $stmt->fetch(PDO::FETCH_ASSOC);
 								<input type="text" id="prenom" name="prenom" autocomplete="off" autofocus value="<?php echo htmlspecialchars($user['prenom']); ?>" readonly><br /><br /><br />
 								<input type="submit" value="Commencer">
 							</form>
-						
-						
-						
 						
 						
 						

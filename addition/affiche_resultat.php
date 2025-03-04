@@ -2,7 +2,7 @@
 <html lang="fr">
 	<head>
 		<meta charset="utf-8">
-		<title>Résultats</title>
+		<title>Résultats addition </title>
 	</head>
 	<body style="background-color:grey;">
 		<center>

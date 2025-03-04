@@ -98,16 +98,13 @@
 							// Fermer la connexion
 							$conn->close();
 
-							// Détruire la session
-							session_destroy();
 							
-							//session_destroy();
-							//session_unset();
 							?>
 							<form action="index.php" method="post">
-								<input type="submit" value="Recommencer" autofocus>
+								<input type="submit" value="Recommencer le test" autofocus>
 							</form>
-							<a href="../index.php">Retour à l'accueil</a>
+
+							<a href="../index.php">Retour à l'accueil principal</a>
         
     
 						</center>

@@ -2,7 +2,7 @@
 <html lang="fr">
 	<head>
 		<meta charset="utf-8">
-		<title>Résultats</title>
+		<title>Résultats multiplication</title>
 	</head>
 	<body style="background-color:grey;">
 		<center>
@@ -18,13 +18,11 @@
 							?>
 						
 						
-						
 							<h3>Quel est le prénom de l'enfant ?</h3><br />
 							<form action="./affiche_resultat.php" method="get">
 								<input type="text" id="prenomRes" name="prenomRes" autocomplete="off"><br /><br /><br />
 								<input type="submit" value="Afficher les résultats">
 							</form>
-						
 						
 							<?php
 								}else{
@@ -54,9 +52,6 @@
 							?>
 							
 							
-															
-						
-						
 						
 						</center>
 					</td>

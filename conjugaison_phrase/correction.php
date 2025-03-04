@@ -72,15 +72,16 @@
 							<?php
 								if($_SESSION['nbQuestion']<$_SESSION['nbMaxQuestions']){
 							?>
+
 							<!-- Cas où ce n'était pas la dernière question -->
-							<form action="./question.php" method="post">
+							<form action="question.php" method="post">
 								<input type="submit" value="Suite" autofocus>
 							</form>
 							<?php
 								}else{
 							?>
 							<!-- Cas où c'était la dernière question -->
-							<form action="./fin.php" method="post">
+							<form action="fin.php" method="post">
 								<input type="submit" value="Suite" autofocus>
 							</form>
 							<?php
@@ -88,17 +89,10 @@
 										
 							?>
 							<br /><br />
-							<form action="./raz.php" method="post">
-								<input type="submit" value="Tout recommencer">
+							<form action="raz.php" method="post">
+								<input type="submit" value="Recommencer et supprimer mes résultats">
 							</form>
 
-
-
-
-
-
-
-    
     
 						</center>
 					</td>

@@ -15,7 +15,7 @@
 <?php
 // Vérifie si l'utilisateur est connecté
 if (!isset($_SESSION["user_id"])) {
-    header("Location: connexion.php");
+    header("Location: page_connexion.php");
     exit();
 }
 
@@ -33,7 +33,7 @@ $user = $stmt->fetch(PDO::FETCH_ASSOC);
 // Si l'utilisateur n'existe pas, détruit la session et redirige
 if (!$user) {
     session_destroy();
-    header("Location: connexion.php");
+    header("Location: page_connexion.php");
     exit();
 }
 ?>
@@ -65,9 +65,6 @@ if (!$user) {
                             <input type="text" id="prenom" name="prenom" autocomplete="off" autofocus value="<?php echo htmlspecialchars($user['prenom']); ?>" readonly><br /><br /><br />
 								<input type="submit" value="Commencer">
 							</form>
-						
-						
-						
 						
 						
 						

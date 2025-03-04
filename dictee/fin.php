@@ -3,7 +3,9 @@
 	session_start();
     include 'utils.php';
     
-    log_adresse_ip("logs/log.txt","fin.php - ".$_SESSION['prenom']);
+    log_adresse_ip("logs/logs.json", "fin.php", [
+		'score_global' => $_SESSION['nbBonneReponse']
+	]);
 
 	$_SESSION['origine']="fin";
 ?>
@@ -54,8 +56,54 @@
 									}	
 								}
 							}
-							//session_destroy();
-							//session_unset();
+
+							include '../connexion_bdd.php'; // Inclusion du fichier de connexion à la BDD 
+
+							// Vérifier la connexion
+							if ($conn->connect_error) {
+								die("Échec de la connexion à la base de données : " . $conn->connect_error);
+							}
+
+							// Lire le fichier JSON
+							$cheminFichierLog = "logs/logs.json";
+							$logs = [];
+							if (file_exists($cheminFichierLog)) {
+								$contenu = file_get_contents($cheminFichierLog);
+								if (!empty($contenu)) {
+									$logs = json_decode($contenu, true) ?? [];
+								}
+							}
+
+							// Récupérer les informations de la session
+							$user = $_SESSION['prenom'] ?? 'Inconnu';
+							$module = "dictee"; // Tu peux aussi le récupérer de $_SESSION si besoin
+							$date = (new DateTime())->format('Y-m-d H:i:s'); // Date actuelle
+							$score_global = $_SESSION['nbBonneReponse'] ?? 0; // Score global de l'utilisateur
+
+							// Insérer dans la base de données
+							$sql = "INSERT INTO logs (user, module, date, score_global) VALUES (?, ?, ?, ?)";
+							$stmt = $conn->prepare($sql);
+							$stmt->bind_param("sssi", $user, $module, $date, $score_global);
+							$stmt->execute();
+							$stmt->close();
+
+							// Supprimer le fichier JSON après insertion (optionnel)
+							//unlink($cheminFichierLog);
+
+							$cheminFichierLog = "logs/logs.json";
+							if (!file_exists($cheminFichierLog)) {
+								file_put_contents($cheminFichierLog, json_encode([], JSON_PRETTY_PRINT | JSON_UNESCAPED_UNICODE));
+							}
+							// Fermer la connexion
+							$conn->close();
+
+							?>
+							<form action="index.php" method="post">
+								<input type="submit" value="Recommencer le test" autofocus>
+							</form>
+
+							<a href="../index.php">Retour à l'accueil principal</a>
+
 							?>
 							<form action="./index.php" method="post">
 								<input type="submit" value="Recommencer" autofocus>

@@ -15,7 +15,7 @@
 <?php
 // Vérifie si l'utilisateur est connecté
 if (!isset($_SESSION["user_id"])) {
-    header("Location: connexion.php");
+    header("Location: page_connexion.php");
     exit();
 }
 
@@ -33,7 +33,7 @@ $user = $stmt->fetch(PDO::FETCH_ASSOC);
 // Si l'utilisateur n'existe pas, détruit la session et redirige
 if (!$user) {
     session_destroy();
-    header("Location: connexion.php");
+    header("Location: page_connexion.php");
     exit();
 }
 ?>
@@ -42,7 +42,7 @@ if (!$user) {
 <html lang="fr">
 <head>
     <meta charset="utf-8">
-    <title>Accueil</title>
+    <title>Accueil test Addition</title>
 </head>
 <body style="background-color:grey;">
     <?php 

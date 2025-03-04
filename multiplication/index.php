@@ -15,7 +15,7 @@
 <?php
 // Vérifie si l'utilisateur est connecté
 if (!isset($_SESSION["user_id"])) {
-    header("Location: connexion.php");
+    header("Location: page_connexion.php");
     exit();
 }
 
@@ -33,7 +33,7 @@ $user = $stmt->fetch(PDO::FETCH_ASSOC);
 // Si l'utilisateur n'existe pas, détruit la session et redirige
 if (!$user) {
     session_destroy();
-    header("Location: connexion.php");
+    header("Location: page_connexion.php");
     exit();
 }
 ?>
@@ -42,7 +42,7 @@ if (!$user) {
 <html lang="fr">
 	<head>
 		<meta charset="utf-8">
-		<title>Accueil</title>
+		<title>Accueil multiplication</title>
 	</head>
 	<body style="background-color:grey;">
 		<?php 
@@ -58,9 +58,7 @@ if (!$user) {
 					<td style="width:1000px;height:430px;background-image:url('./images/NO.jpg');background-repeat:no-repeat;">
 						<center>
 						
-						
-						
-						
+						*
 							<a href="../index.php"> Retour à l'accueil </a>
 
 							<h1>Bonjour !</h1><br />
@@ -70,10 +68,6 @@ if (!$user) {
                             	<input type="text" id="prenom" name="prenom" autocomplete="off" autofocus value="<?php echo htmlspecialchars($user['prenom']); ?>" readonly><br /><br /><br />
 								<input type="submit" value="Commencer">
 							</form>
-						
-						
-						
-						
 						
 						
 						</center>
