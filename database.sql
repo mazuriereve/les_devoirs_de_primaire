@@ -1,5 +1,4 @@
 CREATE DATABASE devoirs_primaires;
-
 USE devoirs_primaires;
 
 CREATE TABLE users (
@@ -11,6 +10,10 @@ CREATE TABLE users (
     mot_de_passe VARCHAR(255) NOT NULL
 );
 
+ALTER TABLE users
+ADD COLUMN email VARCHAR(100) NOT NULL AFTER mot_de_passe,
+ADD COLUMN role ENUM('enfant', 'enseignant', 'parent') NOT NULL AFTER email;
+
 
 CREATE TABLE logs (
     id INT AUTO_INCREMENT PRIMARY KEY,
@@ -20,3 +23,4 @@ CREATE TABLE logs (
     page VARCHAR(255),
     navigateur TEXT
 );
+
