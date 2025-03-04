@@ -24,5 +24,22 @@
         "user": "Inconnu",
         "module": "addition",
         "event": "DÉBUT SESSION"
+    },
+    {
+        "timestamp": "2025-03-04 13:40:53",
+        "ip": "127.0.0.1",
+        "page": "index.php",
+        "method": "GET",
+        "user": "Inconnu",
+        "module": "addition",
+        "event": "DÉBUT SESSION"
+    },
+    {
+        "timestamp": "2025-03-04 13:40:54",
+        "ip": "127.0.0.1",
+        "page": "question.php - aze - Question numéro 1",
+        "method": "POST",
+        "user": "aze",
+        "module": "addition"
     }
 ]
