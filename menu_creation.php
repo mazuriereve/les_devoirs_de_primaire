@@ -96,10 +96,12 @@ include 'connexion_bdd.php';
         ?>
     </div>
 
-    <!-- Pied de page -->
-    <footer class="bg-primary text-white text-center py-3 mt-4">
+    <!-- Footer -->
+    <footer>
         <p>Rémi Synave</p>
         <p>Contact : remi.synave@univ-littoral.fr</p>
+        <p>Crédits image : Image par <a href="https://pixabay.com/fr/users/Mimzy-19397/" class="text-white">Mimzy</a> de <a href="https://pixabay.com/fr/" class="text-white">Pixabay</a></p>
+        <p>Crédits voix : Denise de <a href="https://azure.microsoft.com/fr-fr/services/cognitive-services/text-to-speech/" class="text-white">Microsoft Azure</a></p>
     </footer>
 
     <!-- Bootstrap JS -->

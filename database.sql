@@ -5,21 +5,14 @@ CREATE TABLE users (
     id INT AUTO_INCREMENT PRIMARY KEY,
     nom VARCHAR(50) NOT NULL,
     prenom VARCHAR(50) NOT NULL,
-    classe VARCHAR(20) NOT NULL,
+    classe VARCHAR(255)  NULL,
     date_creation TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
-    mot_de_passe VARCHAR(255) NOT NULL
+    mot_de_passe VARCHAR(255) NOT NULL,
+    email VARCHAR(255) NULL,
+    role ENUM('enfant', 'enseignant', 'parent'),
+    nom_enfant VARCHAR(255) NULL,
+    prenom_enfant VARCHAR(255) NULL;
 );
-
-ALTER TABLE users
-ADD COLUMN email VARCHAR(100) NOT NULL AFTER mot_de_passe,
-ADD COLUMN role ENUM('enfant', 'enseignant', 'parent') NOT NULL AFTER email;
-ADD COLUMN nom_enfant VARCHAR(255) NULL,
-ADD COLUMN prenom_enfant VARCHAR(255) NULL;
-MODIFY classe VARCHAR(255) NULL,
-MODIFY email VARCHAR(255) NULL,
-MODIFY nom_enfant VARCHAR(255) NULL,
-MODIFY prenom_enfant VARCHAR(255) NULL;
-
 
 
 CREATE TABLE logs (
@@ -44,7 +37,6 @@ CREATE TABLE exercices_comprehension (
     texte TEXT NOT NULL
 );
 
-
 CREATE TABLE questions_comprehension (
     id INT AUTO_INCREMENT PRIMARY KEY,
     exercice_id INT,
@@ -59,7 +51,13 @@ CREATE TABLE reponses_eleves (
     eleve_nom VARCHAR(100) NOT NULL,
     reponse TEXT NOT NULL,
     date_reponse TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
-    FOREIGN KEY (question_id) REFERENCES questions_comprehension(id) ON DELETE CASCADE
+    FOREIGN KEY (question_id) REFERENCES questions_comprehension(id) ON DELETE CASCADE,
+    score INT NOT NULL,
 );
 
-ALTER TABLE reponses_eleves ADD COLUMN score TINYINT(1) NOT NULL DEFAULT 0;
+CREATE TABLE scores_eleves (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    eleve_nom VARCHAR(255),
+    score_total INT,
+    date_reponse TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+);
