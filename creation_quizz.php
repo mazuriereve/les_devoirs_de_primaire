@@ -54,7 +54,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     }
 
     header {
-        background-color: #4CAF50;
+        background-color:rgb(0, 55, 255);
         color: white;
         text-align: center;
         padding: 20px;
@@ -85,7 +85,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     }
 
     form button {
-        background-color: #4CAF50;
+        background-color: rgb(0, 55, 255);
         color: white;
         padding: 10px 20px;
         border: none;
@@ -104,7 +104,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     </style>
 
     <main>
-        <form action="creation_exercices.php" method="POST">
+        <form action="creation_quizz.php" method="POST">
             <h2>Texte :</h2>
             <textarea name="texte" id="texte" rows="6" placeholder="Saisissez le texte ici..."></textarea>
 
@@ -122,6 +122,9 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
             <button type="button" id="ajouter-question">Ajouter une question</button>
             <button type="submit">Enregistrer l'exercice</button>
         </form>
+
+        <a href="menu_creation.php"> Retourner à l'accueil </a>
+
     </main>
 
     <script>
@@ -143,6 +146,12 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         });
         </script>
 
+    <footer>
+        <p>Rémi Synave</p>
+        <p>Contact : remi.synave@univ-littoral.fr</p>
+        <p>Crédits image : Image par <a href="https://pixabay.com/fr/users/Mimzy-19397/" class="text-white">Mimzy</a> de <a href="https://pixabay.com/fr/" class="text-white">Pixabay</a></p>
+        <p>Crédits voix : Denise de <a href="https://azure.microsoft.com/fr-fr/services/cognitive-services/text-to-speech/" class="text-white">Microsoft Azure</a></p>
+    </footer>
 
 </body>
 </html>

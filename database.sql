@@ -52,3 +52,14 @@ CREATE TABLE questions_comprehension (
     reponse_correcte TEXT NOT NULL,
     FOREIGN KEY (exercice_id) REFERENCES exercices_comprehension(id)
 );
+
+CREATE TABLE reponses_eleves (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    question_id INT NOT NULL,
+    eleve_nom VARCHAR(100) NOT NULL,
+    reponse TEXT NOT NULL,
+    date_reponse TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    FOREIGN KEY (question_id) REFERENCES questions_comprehension(id) ON DELETE CASCADE
+);
+
+ALTER TABLE reponses_eleves ADD COLUMN score TINYINT(1) NOT NULL DEFAULT 0;
