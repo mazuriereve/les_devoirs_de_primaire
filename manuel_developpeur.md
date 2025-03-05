@@ -38,12 +38,18 @@ Plateforme éducative utilisant :
 │── database.sql                              → Base de données SQL
 │── connexion_bdd.php                         → Connexion à la base de données
 │── style.css                                 → Style du site intégral
+│── creation_quizz.sql                        → Page qui permet aux professeurs de faire leurs quizz pour les élèves
+│── exercices_eleves.php                      → Page qui affiche les questions que le professeur a fait avec intéraction (pour les elèves)
+│── menu_creation.css                         → Menu pour les professeur pour voir leurs exercices + avoir accès à en faire d'autres
+│── manuel_utilisateur.php                    → Manuel destinés aux utilisateurs
+│── manuel_developpeur.php                    → Manuel destinés aux developpeurs 
+│── README.md                                 
 ```
 ---
 
 ## 3️⃣ Base de données
 
-Pour obtenir la base de données elle est disponible dans le fichier database.sql , recopiez le script dans votre base de données , puis votre base de données sera prête.
+Pour obtenir la base de données elle est disponible dans le fichier database.sql , recopiez le script dans votre base de données , puis votre base de données sera prête à l'utilisation
 
 #### Table `users`: Gère tout les utilisateurs avec leur rôle et leurs informations
 
@@ -57,6 +63,22 @@ Pour obtenir la base de données elle est disponible dans le fichier database.sq
 #### Table `professeurs_eleves` : Permet de définir quels professeurs à comme élèves
 | id | professeur_id | eleve_id |
 |----|---------|------|
+
+#### Table `exercices_comprehension` : Permet de créeer les exercices et de répertorier les id 
+| id | texte | 
+|----|-------|
+
+#### Table `questions_comprehension` : Permet de stocker les éléments des questions/exercices que le prof créer 
+| id | exercice_id | question | reponse_correcte |
+|----|-------------|----------|------------------|
+
+#### Table `reponses_eleves` : Permet de stocker toutes les réponses aux questions (les réponses sont dans la base de données sont ligne par ligne)
+| id | question_id | eleve_nom | reponse | date_reponse | score |
+|----|---------|---------------|----|---------|---------------|
+
+#### Table `scores_eleves` : Permet de stocker le score global à la fin de chaque Session
+| id |  eleve_nom | score_total | date_reponse | 
+|----|---------|---------------|----|
 
 
 ##  4️⃣ Développement
@@ -73,8 +95,8 @@ Logs JSON (logs.json) pour le suivi des sessions qui permet l'intégratation des
 
 ### 🔹 Interface enseignant
 
-Ajout de nouveaux exercices
-Téléchargement des résultats de tout les élèves
+Ajouter la possibilitée pour les professeurs de faire un système de création d'exercice pour les élèves avec un système de logs à chaque fois que l'élève fais l'exercice.
+Visualisation des résultats de tout les élèves disponibles sur leurs profils individuels.
 
 ## 5️⃣ Workflow GitHub
 

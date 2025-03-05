@@ -1,0 +1,28 @@
+[
+    {
+        "timestamp": "2025-03-05 23:32:39",
+        "ip": "127.0.0.1",
+        "page": "index.php",
+        "method": "GET",
+        "user": "Inconnu",
+        "module": "dictee",
+        "event": "DÉBUT SESSION"
+    },
+    {
+        "timestamp": "2025-03-05 23:32:40",
+        "ip": "127.0.0.1",
+        "page": "question.php - Lilian - Question numéro 1",
+        "method": "POST",
+        "user": "Lilian",
+        "module": "dictee"
+    },
+    {
+        "timestamp": "2025-03-05 23:32:42",
+        "ip": "127.0.0.1",
+        "page": "index.php",
+        "method": "GET",
+        "user": "Inconnu",
+        "module": "dictee",
+        "event": "DÉBUT SESSION"
+    }
+]

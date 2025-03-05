@@ -15,14 +15,31 @@
 1. Accédez à la page de connexion.
 2. Saisissez votre Nom Prénom et mot de passe.
 3. Cliquez sur **"Se connecter"** pour accéder à votre compte.
-
 ---
 
 ## 2️⃣ Naviguer sur le site
 
-- **Page d’accueil** : Page d'accueil simpliste avec une barre de navigation qui permet d'accéder au profil et au système de déconnexion et accès aux exercices en bas de la page.
+### 2.1 Navigation sur le site pour élèves
+
+- **Page d’accueil** : Page d'accueil simpliste avec une barre de navigation qui permet d'accéder au profil et au système de déconnexion , accès aux exercices en bas de la page (exercices par défaut) et accès aux exercices crée par les professeurs dans la barre de navigation
 - **Profil** : Informations personnelles et suivi des scores avec des tableaux et des graphiques qui montrent la courbe de progression
-- **Exercices** : Sélection d’un module et accès a l'exercice.
+- **Exercices** : Sélection d’un module et accès a l'exercice (chaque série possède 10 questions et à la fin de chaque session vous aurez vos résultats)
+
+### 2.2 Navigation sur le site pour les parents
+
+- **Page d’accueil** : Page d'accueil simpliste avec une barre de navigation qui permet d'accéder au profil et au système de déconnexion , accès aux exercices en bas de la page (exercices par défaut).
+- **Profil** : Visualisation du profil de l'enfant et suivi des scores avec des tableaux et des graphiques qui montrent la courbe de progression
+- **Exercices** : Sélection d’un module et accès a l'exercice (chaque série possède 10 questions et à la fin de chaque session vous aurez vos résultats)
+
+### 2.3 Navigation sur le site pour professeurs
+
+- **Page d’accueil** : Page d'accueil simpliste avec une barre de navigation qui permet d'accéder au profil et au système de déconnexion , accès aux exercices en bas de la page (exercices par défaut) 
+- **Profil** : Informations personnelles et suivi des scores avec des tableaux et des graphiques qui montrent la courbe de progression
+- **Exercices** : Sélection d’un module et accès a l'exercice (chaque série possède 10 questions et à la fin de chaque session vous aurez vos résultats)
+- **Menu Création** : Permet de voir les exercices créer (avec les détails) + possibilitée d'accéder a la page qui permet la création d'exercice
+- **Création d'exercices** : Créer des questions et réponses personnalisées.
+- **Profils élèves** : Voir la liste de nos élèves
+- **Profil élève** : Voir individuellement les résultats et profils des élèves.
 
 ---
 
@@ -53,5 +70,5 @@
 
 👨‍🏫 **Les enseignants peuvent** :
 - Ajouter de nouveaux exercices.
-- Accéder aux profils des élèves.
-- Télécharger les résultats des élèves sous forme de fichiers.
+- Accéder aux profils des élèves. (possibilité de voir tout nos élèves + voir les profils des élèves individuellement)
+- Visualisation des résultats des élèves sous forme de fichiers (qui s'ouvre sur une autre page du navigateur)

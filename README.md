@@ -45,8 +45,6 @@ En fonction des performances de l'enfant on peut visualiser depuis le profil (ac
 
 - Création d'une base de données localement (afin de pouvoir l'utiliser copier coller le code database.sql ainsi que modifier le fichier de connexion_bdd.php pour modifier les champ qui correspondent a votre base de données locale.)
 
-
-
 ---
 4 - Améliorer le système d'affichage des résultats (2 points) : Peut être naturellement combiné avec le point 1 (stats sur profil).
 - Depuis le profil les scores sont affichés sous la forme de tableau et de graphique en fonction de chaque différents modules.
@@ -56,7 +54,10 @@ En fonction des performances de l'enfant on peut visualiser depuis le profil (ac
 
 Exemple : pour la multiplication, on peut, par exemple, proposer des bornes min et max. Si l'enfant est en CP, l'utilisateur choisira entre 1 et 9 pour les deux nombres. En CE2, il choisira entre 1 et 1000 pour le nombre de gauche et entre 1 et 9 pour celui de droite. En CM2, il choisir entre 1 et 1000 pour les deux nombres.
 
-## PAS ENCORE COMMENCE 
+## EN COURS
+
+- Sur addition : mise en place de bornes AUTOMATIQUES en fonction de la classe de l'élève pour limiter la difficultée de l'exercice et de ne pas mettre trop de niveau 
+        *Pour plus tard peut être essayer de monter et baisser la difficultée*
 
 --- 
 
