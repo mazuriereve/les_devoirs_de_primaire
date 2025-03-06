@@ -62,64 +62,40 @@ $notes = $result_notes->fetch_all(MYSQLI_ASSOC);
 <html lang="fr">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Profil Élève Individuel</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Mes Élèves</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
-    <link rel="stylesheet" href="style.css">
-
     <style>
         body {
-            background-color: #f4f6f9;
-            font-family: 'Arial', sans-serif;
+            background-color: grey;
         }
         .container_el {
             width: 80%;
-            margin: 50px auto;
-            background-color: #fff;
-            padding: 30px;
-            border-radius: 15px;
-            box-shadow: 0 10px 15px rgba(0, 0, 0, 0.1);
+            text-align: center;
+            margin: 70px auto;
+            background-color: #f8f9fa;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
         }
         .table {
             background-color: white;
             text-align: center;
-        }
-        th, td {
-            padding: 10px;
-            text-align: center;
-        }
-        th {
-            background-color: #45a1ff;
-            color: white;
         }
         footer {
             background-color: #45a1ff;
             color: white;
             text-align: center;
             padding: 15px;
-            position: absolute;
-            width: 100%;
-            bottom: 10;
-        }
-        h2 {
-            margin-top: 30px;
-            color: #333;
-        }
-        .profile-info {
-            margin-bottom: 20px;
-            font-size: 18px;
-        }
-        .profile-info strong {
-            color: #45a1ff;
+            margin-top: 50px;
         }
         .btn-custom {
             background-color: #45a1ff;
             color: white;
-            text-decoration: none;
-            padding: 10px 20px;
+            border: none;
+            padding: 5px 10px;
             border-radius: 5px;
-            font-weight: bold;
-            transition: background-color 0.3s;
+            text-decoration: none;
         }
         .btn-custom:hover {
             background-color: #3791e5;

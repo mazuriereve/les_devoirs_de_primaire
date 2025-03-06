@@ -16,23 +16,14 @@ Site permettant aux enfants en primaire de faire des exercices de maths/françai
     en tant que prof on rajoute son email
 
 En fonction des performances de l'enfant on peut visualiser depuis le profil (accesible depuis le compte du parent , du professeur et de l'élève)
-
 - Les résultats se mettent en bdd à chaque fin de "Session" dans la table logs avec un score global calculé à chaque fin de sessions
-## EN COURS 
--ajouter dans les graphiques les dates des test 
-
 ---
 
-1.5 - Ajout de rôle aux utilisateurs (10 points) : ajout des rôles enfant, enseignant et parent. Les parents peuvent voir les résultats de leurs enfants. Les enseignants peuvent voir les résultats de leurs élèves. Les enfants peuvent faire des exercices.
- Dans l'idéal, il faudrait que les enseignants puissent configurer (voir point 5) les exercices pour les enfants.
+1.5 - Ajout de rôle aux utilisateurs (10 points) : ajout des rôles enfant, enseignant et parent. Les parents peuvent voir les résultats de leurs enfants. Les enseignants peuvent voir les résultats de leurs élèves. Les enfants peuvent faire des exercices. Dans l'idéal, il faudrait que les enseignants puissent configurer (voir point 5) les exercices pour les enfants.
 
-- Système de rôle : enfant , enseignant , parent 
-- on peut voir les scores quand on est un élève et mon parent peut voir mes résultat
-- les professeurs peuvent avoir la liste de leurs élèves , voir leur profil et leur résultat et avoir accès aux fichiers pour chaque test.
-
-## EN COURS
--  Rajouter la possibilité de rajouter des exercices à mettre dans la page
-
+- Système de rôle : enfant , enseignant , parent definissable lors de l'inscription (mais pas changeable par la suite)
+- on peut voir les scores quand on est un élève et mon parent peut voir mes résultats
+- les professeurs peuvent avoir la liste de leurs élèves ou si il n'en n'ont pas ils peuvent se mettre avec un enfant , voir leurs profils et leurs résultats et avoir accès aux fichiers pour chaques tests.
 
 ---
 2 - Améliorer le système de logs (3 points) : Voir les répertoires logs de chaque exercice. 
@@ -47,7 +38,12 @@ En fonction des performances de l'enfant on peut visualiser depuis le profil (ac
 
 ---
 4 - Améliorer le système d'affichage des résultats (2 points) : Peut être naturellement combiné avec le point 1 (stats sur profil).
-- Depuis le profil les scores sont affichés sous la forme de tableau et de graphique en fonction de chaque différents modules.
+
+- Depuis le profil les scores sont affichés sous la forme de tableaux et de graphiques en fonction de chaque différents modules.
+
+### EN COURS
+
+si y a le temps pouvoir mettre les graphiques pour les conjugaisons + remettre le score total de l'utilisateur sur les exercices "spéciaux"
 
 ---
 5 - Ajouter la possibilité de configurer les exercices (3 points) : doit donner la possibilité à l'utilisateur de configurer l'exercice. Les paramètrages possibles sont dépendants de l'exercice selectionné. 
@@ -57,7 +53,7 @@ Exemple : pour la multiplication, on peut, par exemple, proposer des bornes min 
 ## EN COURS
 
 - Sur addition : mise en place de bornes AUTOMATIQUES en fonction de la classe de l'élève pour limiter la difficultée de l'exercice et de ne pas mettre trop de niveau 
-        *Pour plus tard peut être essayer de monter et baisser la difficultée*
+        *Pour plus tard peut être essayer de monter et baisser la difficultée* → Problème quand je fais ca je ne suis plus limitée a 10 questions et tout bug
 
 --- 
 
