@@ -1,43 +1,46 @@
 # les-devoirs-de-primaire
 Site permettant aux enfants en primaire de faire des exercices de maths/français.
 
-# Installation :
-1 - Téléchargez le code
+# Guide d'installation  :
+1 - Téléchargez le code source depuis le dépot github : 
+```sh
+git clone ....
+```
 
-2 - Transférez le sur un hébergement avec php (pas de base de données utilisée)
+2 - Transférez le dossier obtenu sur un environnement de développement (Ex: Mamp / Wamp / Xamp / Laragon , ... ) avec l'accès à une database  
 
-3 - Après le transfert, dans les répertoires addition, conjugaison_phrase, conjugaison_verbe, dictee, multiplication et soustraction, changez les droits en 777 pour les sous-répertoires logs, resultats et supprime → Fait
+3 - Après le transfert, dans les répertoires **addition, conjugaison_phrase, conjugaison_verbe, dictee, multiplication et soustraction**, changez les droits en 777 pour les sous-répertoires logs, resultats et supprime
 
 # TODO
-1 - Créer un système de connexion avec profil (10 points) : inclut l'inscription (fait), la connexion(fait) et la sauvegarde des différents exercices (fait sur bdd) réalisés avec visualisation de stats sur son profil. (en cours)
+1 - Créer un système de connexion avec profil  : inscription, connexion et la sauvegarde des différents exercices réalisés avec la visualisation de stats sur son profil.
 - Système de connexion fait avec des le départ la possibilitée de faire son profil en fonction de son rôle
     en tant que parent on met son email + le nom et le prénom de son enfant 
     en tant qu'enfant on met sa classe 
     en tant que prof on rajoute son email
 
 En fonction des performances de l'enfant on peut visualiser depuis le profil (accesible depuis le compte du parent , du professeur et de l'élève)
-- Les résultats se mettent en bdd à chaque fin de "Session" dans la table logs avec un score global calculé à chaque fin de sessions
+- Les résultats se mettent en bdd à chaque fin de "Sessions" dans la table logs avec un score global calculé à chaque fin de sessions
 ---
 
-1.5 - Ajout de rôle aux utilisateurs (10 points) : ajout des rôles enfant, enseignant et parent. Les parents peuvent voir les résultats de leurs enfants. Les enseignants peuvent voir les résultats de leurs élèves. Les enfants peuvent faire des exercices. Dans l'idéal, il faudrait que les enseignants puissent configurer (voir point 5) les exercices pour les enfants.
+1.5 - Ajout de rôle aux utilisateurs : ajout des rôles enfant, enseignant et parent. Les parents peuvent voir les résultats de leurs enfants. Les enseignants peuvent voir les résultats de leurs élèves. Les enfants peuvent faire des exercices. Dans l'idéal, il faudrait que les enseignants puissent configurer les exercices pour les enfants.
 
 - Système de rôle : enfant , enseignant , parent definissable lors de l'inscription (mais pas changeable par la suite)
 - on peut voir les scores quand on est un élève et mon parent peut voir mes résultats
 - les professeurs peuvent avoir la liste de leurs élèves ou si il n'en n'ont pas ils peuvent se mettre avec un enfant , voir leurs profils et leurs résultats et avoir accès aux fichiers pour chaques tests.
 
 ---
-2 - Améliorer le système de logs (3 points) : Voir les répertoires logs de chaque exercice. 
+2 - Améliorer le système de logs : Voir les répertoires logs de chaques exercices. 
 
 - Système de logs qui s'enregistre dans deux formats , le premier dans le fichier logs/log.txt ainsi qu'un fichier json qui s'enregistre dans le dossier logs sous la forme logs.json et qui met à jour la base de données pour rentrer les informations : id / user / date / score_global qui se calcule en fonction des résultats de la session entière 
 
 ---
 
-3 - Utiliser une base de données (3 points) : peut facilement être combiné avec le système de connexion (point 1 et 1.5). 
+3 - Utiliser une base de données  : peut facilement être combiné avec le système de connexion (point 1 et 1.5). 
 
 - Création d'une base de données localement (afin de pouvoir l'utiliser copier coller le code database.sql ainsi que modifier le fichier de connexion_bdd.php pour modifier les champ qui correspondent a votre base de données locale.)
 
 ---
-4 - Améliorer le système d'affichage des résultats (2 points) : Peut être naturellement combiné avec le point 1 (stats sur profil).
+4 - Améliorer le système d'affichage des résultats  : Peut être naturellement combiné avec le point 1 (stats sur profil).
 
 - Depuis le profil les scores sont affichés sous la forme de tableaux et de graphiques en fonction de chaque différents modules.
 

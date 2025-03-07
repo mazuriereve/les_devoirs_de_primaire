@@ -108,10 +108,11 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         
         <form method="POST">
             <?php
-            // Récupération des exercices
+            // Récupération des exercices depuis la table
             $sql = "SELECT id, texte FROM exercices_comprehension ORDER BY id DESC";
             $result = mysqli_query($conn, $sql);
 
+            // Boucle qui permet d'aller chercher dans la table et d'afficher la liste des questions
             if (mysqli_num_rows($result) > 0) {
                 while ($row = mysqli_fetch_assoc($result)) {
                     echo '<div class="card mt-3">';
@@ -143,6 +144,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
             }
             ?>
 
+            <!-- Bouton pour envoyer et corriger les réponses-->
             <div class="text-center mt-4">
                 <button type="submit" class="btn btn-success">Envoyer mes réponses</button>
             </div>

@@ -104,29 +104,34 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     </style>
 
     <main>
+        <!-- Formulaire de creation de quizz pour les professeurs-->
         <form action="creation_quizz.php" method="POST">
+            <!-- dans un premier temps les professeurs rentre le thème de la question-->
             <h2>Texte :</h2>
             <textarea name="texte" id="texte" rows="6" placeholder="Saisissez le texte ici..."></textarea>
 
+            <!-- les professeurs peuvent mettre des questions suivi de la réponse-->
             <h2>Questions :</h2>
             <div id="questions">
                 <div class="question">
+                    <!-- Ici le professeur met la question-->
                     <label for="question1">Question 1 :</label>
                     <textarea name="questions[]" id="question1" placeholder="Question ici..."></textarea>
-
+                    <!-- Ici le professeur met la réponse-->
                     <label for="reponse1">Réponse correcte :</label>
                     <input type="text" name="reponses[]" placeholder="Réponse correcte">
                 </div>
-            </div>
+            </div>      
             
-            <button type="button" id="ajouter-question">Ajouter une question</button>
-            <button type="submit">Enregistrer l'exercice</button>
+            <button type="button" id="ajouter-question">Ajouter une question</button><!-- Bouton qui permet d'ajouter un nombre illimité de question-->
+            <button type="submit">Enregistrer l'exercice</button><!--Une fois terminé on met l'exercice avec les questions/réponses dans la base de données-->
         </form>
 
         <a href="menu_creation.php"> Retourner à l'accueil </a>
 
     </main>
 
+    <!-- Script javascript pour ajouter des questions/réponses a la chaine-->
     <script>
         document.getElementById("ajouter-question").addEventListener("click", function() {
             const questionCount = document.querySelectorAll(".question").length + 1;

@@ -5,15 +5,14 @@ CREATE TABLE users (
     id INT AUTO_INCREMENT PRIMARY KEY,
     nom VARCHAR(50) NOT NULL,
     prenom VARCHAR(50) NOT NULL,
-    classe VARCHAR(255)  NULL,
+    classe VARCHAR(255) NULL,
     date_creation TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
     mot_de_passe VARCHAR(255) NOT NULL,
     email VARCHAR(255) NULL,
     role ENUM('enfant', 'enseignant', 'parent'),
     nom_enfant VARCHAR(255) NULL,
-    prenom_enfant VARCHAR(255) NULL;
+    prenom_enfant VARCHAR(255) NULL
 );
-
 
 CREATE TABLE logs (
     id INT AUTO_INCREMENT PRIMARY KEY,
@@ -39,10 +38,10 @@ CREATE TABLE exercices_comprehension (
 
 CREATE TABLE questions_comprehension (
     id INT AUTO_INCREMENT PRIMARY KEY,
-    exercice_id INT,
+    exercice_id INT NOT NULL,
     question TEXT NOT NULL,
     reponse_correcte TEXT NOT NULL,
-    FOREIGN KEY (exercice_id) REFERENCES exercices_comprehension(id)
+    FOREIGN KEY (exercice_id) REFERENCES exercices_comprehension(id) ON DELETE CASCADE
 );
 
 CREATE TABLE reponses_eleves (
@@ -51,13 +50,13 @@ CREATE TABLE reponses_eleves (
     eleve_nom VARCHAR(100) NOT NULL,
     reponse TEXT NOT NULL,
     date_reponse TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
-    FOREIGN KEY (question_id) REFERENCES questions_comprehension(id) ON DELETE CASCADE,
     score INT NOT NULL,
+    FOREIGN KEY (question_id) REFERENCES questions_comprehension(id) ON DELETE CASCADE
 );
 
 CREATE TABLE scores_eleves (
     id INT AUTO_INCREMENT PRIMARY KEY,
-    eleve_nom VARCHAR(255),
-    score_total INT,
+    eleve_nom VARCHAR(255) NOT NULL,
+    score_total INT NOT NULL,
     date_reponse TIMESTAMP DEFAULT CURRENT_TIMESTAMP
 );

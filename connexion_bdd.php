@@ -1,6 +1,6 @@
 <?php
 // Paramètres de connexion à la base de données
-$host = "localhost";      // Adresse du serveur MySQL (ex: localhost)
+$host = "localhost";      // Adresse du serveur MySQL 
 $username = "root";       // Nom d'utilisateur MySQL
 $password = "root";           // Mot de passe MySQL
 $database = "devoirs_primaires"; // Nom de la base de données

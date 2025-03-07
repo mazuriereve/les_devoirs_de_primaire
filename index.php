@@ -82,14 +82,18 @@ $role = $user["role"]; // Récupère le rôle de l'utilisateur
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
                 <span class="navbar-toggler-icon"></span>
             </button>
+
+            <!-- Navbar avec bootstrap--> 
             <div class="collapse navbar-collapse" id="navbarNav">
                 <ul class="navbar-nav ms-auto">
+                    <!-- On fait des test en fonction des rôles pour afficher différents liens en fonction de la personne pour éviter de faire plusieurs navbar ou plusieurs fichiers-->
                     <?php if ($role == "enfant"): ?>
                         <a class="navbar-brand" href="exercices_eleves.php">Voir les exercices des professeurs</a>
                     <?php endif; ?>
                     <?php if ($role == "enseignant"): ?>
                         <li class="nav-item"><a class="nav-link" href="profils_eleves.php">Consulter les résultats de mes élèves</a></li>
                         <li class="nav-item"><a class="nav-link" href="menu_creation.php">Créer des exercices</a></li>
+                    <!-- Ici on a les menus de la navbar communs pour tout le monde-->
                     <?php else: ?>
                         <li class="nav-item"><a class="nav-link" href="profil.php">Profil</a></li>
                     <?php endif; ?>
