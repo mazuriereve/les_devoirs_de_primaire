@@ -50,11 +50,11 @@ si y a le temps pouvoir mettre les graphiques pour les conjugaisons + remettre l
 
 Exemple : pour la multiplication, on peut, par exemple, proposer des bornes min et max. Si l'enfant est en CP, l'utilisateur choisira entre 1 et 9 pour les deux nombres. En CE2, il choisira entre 1 et 1000 pour le nombre de gauche et entre 1 et 9 pour celui de droite. En CM2, il choisir entre 1 et 1000 pour les deux nombres.
 
-## EN COURS
+- Sur les modules de addition , multiplication et soustraction il y a une mise en place de bornes AUTOMATIQUES en fonction de la classe de l'élève pour limiter la difficultée de l'exercice et de ne pas mettre trop de niveau 
+        
 
-- Sur addition : mise en place de bornes AUTOMATIQUES en fonction de la classe de l'élève pour limiter la difficultée de l'exercice et de ne pas mettre trop de niveau 
-        *Pour plus tard peut être essayer de monter et baisser la difficultée* → Problème quand je fais ca je ne suis plus limitée a 10 questions et tout bug
-
+### EN COURS 
+- sur les modules de conjugaison verbes → voir si on peut mettre simplement conjugaison en francais 
 --- 
 
 6 - Création d'une application pour faire du text-to-speech (10 points) : Application de bureau linux, en ligne de commande ou en back office de ce site. Attention ! De nombreux outils simples d'utilisation ne fournissent pas de résultat satisfisant !
@@ -65,7 +65,6 @@ Exemple : pour la multiplication, on peut, par exemple, proposer des bornes min 
 7 - Documentation complète du projet (3 points) : commentaire dans le code, manuel utilisateur, manuel du développeur, document pour l'aide à l'installation, etc. (en cours)
 
 ## EN COURS 
--- a mettre les commentaires dans le code , terminer les autres document (ce serai bien de les commencer enfait)
 - documents fait manque les images + document aide à l'installation
 
 

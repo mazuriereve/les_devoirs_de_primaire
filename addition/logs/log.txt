@@ -1,6 +1,6 @@
 [
     {
-        "timestamp": "2025-03-05 23:42:54",
+        "timestamp": "2025-03-07 10:42:57",
         "ip": "127.0.0.1",
         "page": "index.php",
         "method": "GET",
@@ -9,7 +9,7 @@
         "event": "DÉBUT SESSION"
     },
     {
-        "timestamp": "2025-03-05 23:45:15",
+        "timestamp": "2025-03-07 10:49:21",
         "ip": "127.0.0.1",
         "page": "index.php",
         "method": "GET",
@@ -18,159 +18,12 @@
         "event": "DÉBUT SESSION"
     },
     {
-        "timestamp": "2025-03-05 23:45:22",
-        "ip": "127.0.0.1",
-        "page": "correction.php",
-        "method": "POST",
-        "user": "Lilian",
-        "module": "addition"
-    },
-    {
-        "timestamp": "2025-03-05 23:45:23",
-        "ip": "127.0.0.1",
-        "page": "correction.php",
-        "method": "POST",
-        "user": "Lilian",
-        "module": "addition"
-    },
-    {
-        "timestamp": "2025-03-05 23:45:24",
-        "ip": "127.0.0.1",
-        "page": "correction.php",
-        "method": "POST",
-        "user": "Lilian",
-        "module": "addition"
-    },
-    {
-        "timestamp": "2025-03-05 23:45:24",
-        "ip": "127.0.0.1",
-        "page": "index.php",
-        "method": "POST",
-        "user": "Inconnu",
-        "module": "addition"
-    },
-    {
-        "timestamp": "2025-03-05 23:45:25",
-        "ip": "127.0.0.1",
-        "page": "correction.php",
-        "method": "POST",
-        "user": "lilian",
-        "module": "addition"
-    },
-    {
-        "timestamp": "2025-03-06 14:32:30",
+        "timestamp": "2025-03-07 10:49:46",
         "ip": "127.0.0.1",
         "page": "index.php",
         "method": "GET",
         "user": "Inconnu",
         "module": "addition",
         "event": "DÉBUT SESSION"
-    },
-    {
-        "timestamp": "2025-03-06 14:32:55",
-        "ip": "127.0.0.1",
-        "page": "index.php",
-        "method": "GET",
-        "user": "Inconnu",
-        "module": "addition",
-        "event": "DÉBUT SESSION"
-    },
-    {
-        "timestamp": "2025-03-06 14:34:58",
-        "ip": "127.0.0.1",
-        "page": "index.php",
-        "method": "GET",
-        "user": "Inconnu",
-        "module": "addition",
-        "event": "DÉBUT SESSION"
-    },
-    {
-        "timestamp": "2025-03-06 14:35:27",
-        "ip": "127.0.0.1",
-        "page": "index.php",
-        "method": "GET",
-        "user": "Inconnu",
-        "module": "addition",
-        "event": "DÉBUT SESSION"
-    },
-    {
-        "timestamp": "2025-03-06 14:35:33",
-        "ip": "127.0.0.1",
-        "page": "correction.php",
-        "method": "POST",
-        "user": "Alexis",
-        "module": "addition"
-    },
-    {
-        "timestamp": "2025-03-06 14:35:35",
-        "ip": "127.0.0.1",
-        "page": "correction.php",
-        "method": "POST",
-        "user": "Alexis",
-        "module": "addition"
-    },
-    {
-        "timestamp": "2025-03-06 14:35:36",
-        "ip": "127.0.0.1",
-        "page": "correction.php",
-        "method": "POST",
-        "user": "Alexis",
-        "module": "addition"
-    },
-    {
-        "timestamp": "2025-03-06 14:35:36",
-        "ip": "127.0.0.1",
-        "page": "correction.php",
-        "method": "POST",
-        "user": "Alexis",
-        "module": "addition"
-    },
-    {
-        "timestamp": "2025-03-06 14:35:46",
-        "ip": "127.0.0.1",
-        "page": "correction.php",
-        "method": "POST",
-        "user": "Alexis",
-        "module": "addition"
-    },
-    {
-        "timestamp": "2025-03-06 14:35:50",
-        "ip": "127.0.0.1",
-        "page": "correction.php",
-        "method": "POST",
-        "user": "Alexis",
-        "module": "addition"
-    },
-    {
-        "timestamp": "2025-03-06 14:35:50",
-        "ip": "127.0.0.1",
-        "page": "correction.php",
-        "method": "POST",
-        "user": "Alexis",
-        "module": "addition"
-    },
-    {
-        "timestamp": "2025-03-06 14:36:03",
-        "ip": "127.0.0.1",
-        "page": "correction.php",
-        "method": "POST",
-        "user": "Alexis",
-        "module": "addition"
-    },
-    {
-        "timestamp": "2025-03-06 14:36:14",
-        "ip": "127.0.0.1",
-        "page": "correction.php",
-        "method": "POST",
-        "user": "Alexis",
-        "module": "addition"
-    },
-    {
-        "timestamp": "2025-03-06 14:36:24",
-        "ip": "127.0.0.1",
-        "page": "correction.php",
-        "method": "POST",
-        "user": "Alexis",
-        "module": "addition"
     }
 ]
