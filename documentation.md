@@ -17,7 +17,7 @@
 - **GitHub Desktop** pour envoyer les modifications directement sur le dépôt
 
 ### 2.2 Étapes d'installation
-1. **Télécharger le code source depuis GitHub (il faut que le depot soit en public)** :
+1. **Télécharger le code source depuis GitHub (il faut que je mette le dépôt enpublic)** :
    ```sh
    git clone https://github.com/mazuriereve/les-devoirs-de-primaire
    ```
@@ -49,42 +49,47 @@
 - Enregistrement des sessions d’exercices dans deux formats :
   - `logs/log.txt` (historique brut)
   - `logs/logs.json` (structuré pour analyse et intégration en BDD)
-- Données stockées : ID utilisateur, date, score global
+- Données stockées : ID utilisateur, date, score global , nom du module , nom utilisateur , ... 
 
 ### 3.3 Affichage des résultats
 - Scores affichés sous forme de tableau et graphiques (mis sous la forme d'un graphique linéraire qui affiche la courbe des notes en fonction du nombre de fois qu'il fera les tests)
-- Consultation des performances par date
+- Consultation des performances par nombres d'essais sur les graphiques et par dates sur les tableaux
 
-### 3.4 Configuration des exercices (en développement)
-- Possibilité pour les enseignants de définir les paramètres des exercices 
+### 3.4 Création des exercices pour les enseignants
+- Les professeurs peuvent créer des quizzs pour les élèves avec le nombre de questions qu'ils souhaitent. 
 - De visualiser **en détails** les résultats des élèves , grâce aux fichiers enregistrés dans Résultats.
+
+### 3.5 Modification de la difficultées  des exercices pour les enfants
+- Par défaut les exercices dans les modules **addition , soustraction et multiplication** , sont mis en place en fonction de la classe de l'élève mais si il le souhaite l'élève peut **augmenter la difficultée une seule fois pour passer au niveau supérieur**
+
+
 
 ---
 
 ## 4. Manuel Utilisateur
 
-### 4.1 Connexion et Inscription
+### 4.1  Inscription
 - Se rendre sur la page d'inscription
 - Remplir les champs requis en fonction du rôle choisi
-- Valider pour accéder au formulaire d'inscription
+- Valider pour s'enregistrer dans le site et accéder ensuite au formulaire de connexion
 
-### 4.2 Connexion et Inscription
+### 4.2 Connexion
 - Se rendre sur la page de connexion
-- Remplir les champs requis demandés pour se connecter
+- Remplir les champs requis demandés pour se connecter. (Nom , Prénom et Mot de passe)
 - Valider pour accéder au tableau de bord
 
 ### 4.3 Utilisation des exercices
 - Sélectionner un module (addition , soustraction , multiplication , dictée , ... )
-- Réaliser l’exercice
-- Consulter les résultats après validation
+- Réaliser l’exercice sur une session de 10 questions.
+- Consulter les résultats depuis le Profil ,  après  la validation
 
 ### 4.4 Suivi des scores 
 - Accéder à l’onglet **Profil**
 - Voir l’historique des performances sous forme de tableaux et de graphiques
 
 ### 4.5 Suivi des profils des élèves
-- Accéder à l’onglet **.....**
-- ...
+- Accéder à l’onglet **Consulter les résultats de mes élèves** , vous aurez ensuite la liste des élèves dont vous êtes professeurs OU une liste des élèves auxquels vous pourriez vous associer
+- Depuis cette page vous avez l'accès d'aller sur **Voir Profil** , pour obtenir toutes les informations de l'élève ainsi que ses résultats que vous pourrez ouvrir sur votre navigateur en cliquant sur le lien **Voir résultat**
 
 ---
 
@@ -96,6 +101,7 @@
 - **`index.php`** : Page d’accueil du projet 
 - **`page_connexion.php` / `inscription.php`** : Gestion de l’authentification
 - **`profil.php`** : Affichage du profil utilisateur
+- **`profils_eleves.php`** et **`profil_eleve.php`** : Pour les professeurs avoir accès a toute la liste de leur élèves ou individuels
 - **Dossiers exercices** (`addition`, `multiplication`…) : Contiennent les exercices
 - **`logs/`** : Stockage des fichiers de logs
 - **`résultats/`** : Stockage des fichiers de résultat d'une session
@@ -105,24 +111,43 @@
   - Scripts JavaScript pour l’interactivité directement dans les fichiers 
 
 ### 5.2 Base de données
-#### Table `users`
-| id | nom | prenom | email | role | date_creation | password |
-|----|-----|--------|-------|------|--------------|----------|
 
-#### Table `logs`
-| id | user_id | date | score_global |
-|----|---------|------|--------------|
+#### Table `users`: Gère tout les utilisateurs avec leur rôle et leurs informations
 
-#### Table `professeurs_eleves`
+| id | nom | prenom | classe | date_creation | mot_de_passe | email | role | nom_enfant | prenom_enfant |
+|----|-----|--------|-------|------|--------------|----------|----------|----------|----------|
+
+#### Table `logs` : Gère tout les scores de tout les utilisateurs 
+| id | user | module | date | score_global |
+|----|-----|---------|-------|-----------|
+
+#### Table `professeurs_eleves` : Permet de définir quels professeurs à comme élèves
 | id | professeur_id | eleve_id |
 |----|---------|------|
+
+#### Table `exercices_comprehension` : Permet de créeer les exercices et de répertorier les id 
+| id | texte | 
+|----|-------|
+
+#### Table `questions_comprehension` : Permet de stocker les éléments des questions/exercices que le prof créer 
+| id | exercice_id | question | reponse_correcte |
+|----|-------------|----------|------------------|
+
+#### Table `reponses_eleves` : Permet de stocker toutes les réponses aux questions (les réponses sont dans la base de données sont ligne par ligne)
+| id | question_id | eleve_nom | reponse | date_reponse | score |
+|----|---------|---------------|----|---------|---------------|
+
+#### Table `scores_eleves` : Permet de stocker le score global à la fin de chaque Session
+| id |  eleve_nom | score_total | date_reponse | 
+|----|---------|---------------|----|
+
 
 ### 5.3 Ajout d’un exercice (enseignants)
 1. Se connecter en tant qu’enseignant
 2. Accéder à `profils_eleves.php`
 3. Ajouter un exercice via l’interface avec un bouton 
 
-ICI METTRE CE QUEJE COMPTE FAIRE
+ICI METTRE CE QUE JE COMPTE FAIRE
 
 ---
 
@@ -152,8 +177,7 @@ git push origin nouvelle-fonctionnalite
 
 ## 7. Améliorations futures
 - Ajout d’une application **text-to-speech** pour aider à la lecture
-- Amélioration du suivi des performances
-- Interface plus ergonomique avec **Bootstrap** 
+ 
 
 ---
 
