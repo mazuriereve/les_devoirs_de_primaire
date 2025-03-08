@@ -72,3 +72,6 @@
 - Ajouter de nouveaux exercices.
 - Accéder aux profils des élèves. (possibilité de voir tout nos élèves + voir les profils des élèves individuellement)
 - Visualisation des résultats des élèves sous forme de fichiers (qui s'ouvre sur une autre page du navigateur)
+
+---
+Document rédigé par **Mazurier Eve , étudiante en 3ème année BUT3 Informatique**

@@ -103,13 +103,23 @@ $role = $user["role"]; // Récupère le rôle de l'utilisateur
         </div>
     </nav>
 
-    <!-- Hero Section -->
+    <!-- Ici j'ai commencé l'intégration de l'interface text-to-speech-->
     <div class="hero">
         <div class="text-center">
-        <h1 class="fw-bold">Bonjour, <?php echo htmlspecialchars($prenom); ?> !</h1>
-        <h2>Que veux-tu faire ?</h2>
+            <h1 class="fw-bold">Bonjour, <?php echo htmlspecialchars($prenom); ?> !</h1>
+            <h2>Que veux-tu faire ?</h2>
+            <button id="lireMessage">Lire le message</button>
         </div>
-    </div>
+        </div>
+
+        <script>
+            document.getElementById('lirePage').addEventListener('click', function() {
+                const contenuPrincipal = document.querySelector('.container').innerText; // Sélectionne le contenu principal
+                const utterance = new SpeechSynthesisUtterance(contenuPrincipal);
+                window.speechSynthesis.speak(utterance);
+            });
+        </script>
+
 
     <!-- Exercices Section -->
     <div class="container mt-4">

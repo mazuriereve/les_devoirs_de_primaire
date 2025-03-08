@@ -44,44 +44,34 @@ En fonction des performances de l'enfant on peut visualiser depuis le profil (ac
 
 - Depuis le profil les scores sont affichés sous la forme de tableaux et de graphiques en fonction de chaque différents modules.
 
-### EN COURS
+### Prochaines modifications possibles : 
 
-si y a le temps pouvoir mettre les graphiques pour les conjugaisons + remettre le score total de l'utilisateur sur les exercices "spéciaux"
+Modifier les graphiques pour les conjugaisons + remettre le score total de l'utilisateur sur les exercices crée par les professeurs
 
 ---
-5 - Ajouter la possibilité de configurer les exercices (3 points) : doit donner la possibilité à l'utilisateur de configurer l'exercice. Les paramètrages possibles sont dépendants de l'exercice selectionné. 
+5 - Ajouter la possibilité de configurer les exercices : doit donner la possibilité à l'utilisateur de configurer l'exercice. Les paramètrages possibles sont dépendants de l'exercice selectionné. 
 
 Exemple : pour la multiplication, on peut, par exemple, proposer des bornes min et max. Si l'enfant est en CP, l'utilisateur choisira entre 1 et 9 pour les deux nombres. En CE2, il choisira entre 1 et 1000 pour le nombre de gauche et entre 1 et 9 pour celui de droite. En CM2, il choisir entre 1 et 1000 pour les deux nombres.
 
 - Sur les modules de addition , multiplication et soustraction il y a une mise en place de bornes AUTOMATIQUES en fonction de la classe de l'élève pour limiter la difficultée de l'exercice et de ne pas mettre trop de niveau 
         
 
-### EN COURS 
+### Prochaines modifications possibles :  
 - sur les modules de conjugaison verbes → voir si on peut mettre simplement conjugaison en francais 
+
 --- 
 
 6 - Création d'une application pour faire du text-to-speech (10 points) : Application de bureau linux, en ligne de commande ou en back office de ce site. Attention ! De nombreux outils simples d'utilisation ne fournissent pas de résultat satisfisant !
 
-## PAS ENCORE COMMENCE 
+## EN COURS
+
+Début de création d'un système de text-to-speech : disponible sur index.html uniquement sur un petit paragraphe (codée en javascript)
 
 ---
-7 - Documentation complète du projet (3 points) : commentaire dans le code, manuel utilisateur, manuel du développeur, document pour l'aide à l'installation, etc. (en cours)
+7 - Documentation complète du projet : commentaire dans le code, manuel utilisateur, manuel du développeur, document pour l'aide à l'installation, etc
 
 ## EN COURS 
-- documents fait manque les images + document aide à l'installation
+- documents fait mais il manque les images
 
-
-# Installation 
-
-1) Création de la base de données. Dans les fichiers prenez le fichier database.sql et entrer le code dans votre base de données. 
-Ce fichier contient la création de la base de données ainsi que de la table users. Les utilisateurs peuvent renseigner leur Nom , Prénom , Classe , avoir leur date de création de compte et pour sécuriser le mot de passe on ajoute un mot de passe crypté lors de l'entrée en base.
-
-
-première amélioration pour les logs : 
-- optimisation  des informations + regroupement des logs 
-
-- Utilisation de  JSON pour les logs pour faciliter le traitement et l'analyse des données. 
-
-
-
-- utililisation de bootstrap
+---
+Document rédigé par **Mazurier Eve , étudiante en 3ème année BUT3 Informatique**

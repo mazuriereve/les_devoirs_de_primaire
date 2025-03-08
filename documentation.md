@@ -62,8 +62,6 @@
 ### 3.5 Modification de la difficultées  des exercices pour les enfants
 - Par défaut les exercices dans les modules **addition , soustraction et multiplication** , sont mis en place en fonction de la classe de l'élève mais si il le souhaite l'élève peut **augmenter la difficultée une seule fois pour passer au niveau supérieur**
 
-
-
 ---
 
 ## 4. Manuel Utilisateur
@@ -176,11 +174,12 @@ git push origin nouvelle-fonctionnalite
 ---
 
 ## 7. Améliorations futures
-- Ajout d’une application **text-to-speech** pour aider à la lecture
+- Ajout d’une application **text-to-speech** pour aider à la lecture (la beta est disponible sur la page index.html)
  
-
 ---
 
 ## 8. Conclusion
 Ce projet offre une solution complète pour l’apprentissage en ligne des enfants du primaire, avec un suivi personnalisé des performances et une gestion avancée des utilisateurs. L’évolution du projet intégrera de nouvelles fonctionnalités pour le rendre encore plus interactif et efficace.
 
+---
+Document rédigé par **Mazurier Eve , étudiante en 3ème année BUT3 Informatique**

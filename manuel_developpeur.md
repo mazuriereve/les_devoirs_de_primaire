@@ -8,7 +8,7 @@ Plateforme éducative utilisant :
 - Backend : PHP
 - Base de données : MySQL (PHPMyAdmin)
 - Environnement de développement : Laragon / Mamp / Wamp / Xamp
-- ..... : GitHub/ Github Desktop
+- Outils : GitHub/ Github Desktop / Visual Studio Code
 
 ---
 
@@ -153,12 +153,9 @@ Chargement optimisé des ressources CSS et JS (minification, concaténation).
 Ajout de messages d’erreur et de confirmation claires pour guider l’utilisateur.
 Interface simple d'utilisation pour faciliter l'utilisateur à se guider
 
-
 ## 7️⃣ Améliorations futures
 
-### 🚀 Prochaines mises à jour :
+Pour le moment j'ai mis en place une fonctionnalitée text-to-speech : disponible sur la page index.html crée avec javascript → elle sera a intégrer puis développer pour la suite sur tout le site.
 
-✅ Les professeurs pour configurer les exercices 📌
-✅ Text-to-speech 
-✅ Nouvelle interface avec Bootstrap 🎨
-
+---
+Document rédigé par **Mazurier Eve , étudiante en 3ème année BUT3 Informatique**
